@@ -14,8 +14,13 @@ export default {
     },
     plugins: [
         peerDepsExternal(),
-        resolve(),
+        resolve({
+            extensions: ['.js', '.jsx', '.es6', '.es', '.mjs'],
+        }),
+        commonjs(),
         babel({
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',
             presets: [
                 "@babel/preset-env",
                 "@babel/preset-react"
@@ -26,11 +31,8 @@ export default {
                 '@babel/plugin-proposal-class-properties',
                 '@babel/plugin-transform-arrow-functions',
                 '@babel/plugin-transform-template-literals',
-                'babel-plugin-transform-react-remove-prop-types',
-                'babel-plugin-module-resolver',
-            ],
-            exclude: 'node_modules/**'
-        }),
-        commonjs()
+                'babel-plugin-transform-react-remove-prop-types'
+            ]
+        })
     ]
 };
