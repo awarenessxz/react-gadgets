@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Sample = props => {
+    const onClickHandler = e => {
+        props.onClickHandler("Returning Value");
+    };
+
     return (
         <div>
             <h1>Hello {props.title}</h1>
-            <button onClick={props.onClickHandler}>Click Me</button>
+            <button onClick={onClickHandler}>Click Me</button>
         </div>
     );
 };

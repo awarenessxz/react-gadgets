@@ -6,7 +6,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import packageJson from "./package.json";
 
 export default {
-    input: 'src/index.js',
+    input: packageJson.source,
     output: {
         file: packageJson.main,
         format: 'cjs',
