@@ -1,17 +1,69 @@
 # Documentation
 
-## Usage
-
 ## Development
 
-### Testing
+### 1. Important Notes!
+
+#### File naming convention
+
+- React Components / Test / Story (Eg. MyComponent.jsx / MyComponent.test.js / MyComponent.story.js) -- CamelCase
+- Javascript Files (Eg. my-component.js) -- small letter with dashes
+- Markdown (eg. README.md) -- usually CAPS
+
+#### Possible Issues
+
+These are possible issues you might faced when coding your React components
+
+1. jest.mock factory doesn't work inside a test.
+    - Details: `using jest.mock() to mock a React component does not work if you place it inside test/it/describe functions`
+    - Solution: 
+    - Reference: [jest.mock factory doesn't work inside a test](https://github.com/facebook/jest/issues/2582)
+
+#### Writing Test Cases
+
+- we are using `react-test-library` which is meant for replicating user's actions. Hence, the test cases should revolve around that
+- use `describe` to group test cases
+- `structural testing` is automatically generated using `@storybook/addon-storyshots` but you can always follow the sample do `snapshot testing`
+- use `data-testid` in your HTML Dom for easy reference when testing
+- for components with sub components, follow this logic
+    - **E2E test (on Parent) is the preferred approach, as this is how the user experiences the functionality.**
+    - **If Child contains local logic which is not exposed to the Parent via props - like internal state management - then it makes sense to test the Child separately to cover that extra logic.**
+
+##### Possible Issues with Testing
+
+1. Parent vs Child Testing
+2. jest.mock(modules) only works outside of describe/it/test functions
+3. getTestById will not work if there are multiple child components in parent component
+
+### 2. Running the Library Locally
+
+#### Creating new component
+
+Follow the steps below to add additional components to `react-gadgets`
+
+1. Create a folder for your component inside `src/components` folder
+2. Using Test-Driven Development approach, you should create test cases first. Create a unit test `<Name>.test.js`
+    - Run `yarn test:watch` to run the unit tests
+    - Run `yarn test` to get test coverage
+3. Create your React Component `<Name>.jsx`
+4. If you require CSS for your components, create a css module file `<Name>.module.css`
+5. To check on your React Component locally, create a story `<Name>.story.js`
+    - Run `yarn run storybook` && check your component in `http://localhost:6006/`
+    - Note:
+        - Changes are usually automatically reloaded
+        - Documentations in storybook are automatically generated thanks to `@storybook/addon-docs`
+
+To run this library locally, clone the repo.
+    - Run `yarn install` to install the packages
+
+#### Testing
 
 1. `yarn run test` : runs jest and check for test coverage (should be used in your CI/CD pipeline)
 2. `yarn run test:watch`: should be used when you're running your tests locally (they will re-run whenever a file is changed).
     - *Note: press `u` to update snapshot if you make changes to any components*
 3. `yarn run lint` : check for code consistency
 
-#### Additional Testing Notes
+###### Additional Testing Notes
 - Jest / React-Testing-Library Basics
     - `it or test`: describes the test itself. It takes as parameters the name of the test and a function that holds the tests.
     - `describe`: is a way to group the test. We use it to define user behaviour
@@ -34,23 +86,17 @@
         - **Branch Coverage (% Branch)** -- Has each branch of each control structure (such as if-else / switch) been executed?
         - **Line Coverage(% Lines)** -- Has each executable line in the source file been executed?
 
-### Building
+#### Building
 
 1. `yarn install` -- install the node packages
 2. `yarn run build` -- build the library
 
-### Storybook
+#### Storybook
 
 1. `yarn run storybook` -- run storybook
 2. `http://localhost:6006` -- open in internet browser to view storybook locally
 
-### Creating new component
-
-Follow the steps below to add additional components to `react-gadgets`
-
-## Installing Component Library Locally
-
-## Publishing
+### 3. Publishing to NPM
 
 ## Setting up Project in IntelliJ [Optional]
 

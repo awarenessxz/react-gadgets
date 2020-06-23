@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing if component renders properly Snapshot Testing 1`] = `
+<DocumentFragment>
+  <div>
+    <h1
+      data-testid="hello"
+    >
+      Hello World
+    </h1>
+    <h2
+      data-testid="counter"
+    >
+      Click Counter = 0
+    </h2>
+    <button
+      data-testid="button_add"
+    >
+      Add 1
+    </button>
+    <button
+      data-testid="button_minus"
+    >
+      Minus 1
+    </button>
+  </div>
+</DocumentFragment>
+`;

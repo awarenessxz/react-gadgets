@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Intro/Sample Hello World 1`] = `
+exports[`Storyshots Welcome|Sample Hello World 1`] = `
 <div>
   <h1
     data-testid="label"
@@ -17,7 +17,7 @@ exports[`Storyshots Intro/Sample Hello World 1`] = `
 </div>
 `;
 
-exports[`Storyshots Intro/Sample Second Way 1`] = `
+exports[`Storyshots Welcome|Sample Second Way 1`] = `
 <div>
   <h1
     data-testid="label"
@@ -34,70 +34,31 @@ exports[`Storyshots Intro/Sample Second Way 1`] = `
 </div>
 `;
 
-exports[`Storyshots Sample Hello World 1`] = `
+exports[`Storyshots Welcome|SampleV2 Sample With Sub Component 1`] = `
 <div>
   <h1
-    data-testid="label"
+    data-testid="hello"
   >
     Hello 
     World
   </h1>
+  <h2
+    data-testid="counter"
+  >
+    Click Counter = 
+    0
+  </h2>
   <button
-    data-testid="button"
+    data-testid="button_add"
     onClick={[Function]}
   >
-    Click Me
+    Add 1
   </button>
-</div>
-`;
-
-exports[`Storyshots Sample Second Way 1`] = `
-<div>
-  <h1
-    data-testid="label"
-  >
-    Hello 
-    Second
-  </h1>
   <button
-    data-testid="button"
+    data-testid="button_minus"
     onClick={[Function]}
   >
-    Click Me
-  </button>
-</div>
-`;
-
-exports[`Storyshots Welcome/Sample Hello World 1`] = `
-<div>
-  <h1
-    data-testid="label"
-  >
-    Hello 
-    World
-  </h1>
-  <button
-    data-testid="button"
-    onClick={[Function]}
-  >
-    Click Me
-  </button>
-</div>
-`;
-
-exports[`Storyshots Welcome/Sample Second Way 1`] = `
-<div>
-  <h1
-    data-testid="label"
-  >
-    Hello 
-    Second
-  </h1>
-  <button
-    data-testid="button"
-    onClick={[Function]}
-  >
-    Click Me
+    Minus 1
   </button>
 </div>
 `;

@@ -14,7 +14,9 @@ This library was created using the following technology decisions:
 
 Refer to the [configuration guide for more details on how to create new library](./doc/CREATE_NEW_LIBRARY.md)
 
-## Documentation
+## Usage
+
+## Development
 
 Refer to the [documentation on how to use this library](./doc/README.md)
 
@@ -50,6 +52,9 @@ Refer to the [documentation on how to use this library](./doc/README.md)
     - [Advanced React components mocks with jest and react-testing-library](https://medium.com/@ericdcobb/advanced-react-component-mocks-with-jest-and-react-testing-library-f1ae8838400b)
     - [Test Isolation with React](https://kentcdodds.com/blog/test-isolation-with-react)
     - [Understanding Jest Coverage Report](https://medium.com/@krishankantsinghal/how-to-read-test-coverage-report-generated-using-jest-c2d1cb70da8b)
+    - [Understanding Jest Mock](https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c)
+    - [Bypassing Jest Mock](https://jestjs.io/docs/en/bypassing-module-mocks)
+    - [Testing Parent and Child seperately](https://github.com/testing-library/react-testing-library/issues/167)
 
 3. Writing Storybook Documentation
     - [Storybook DocsPage (automatically populated)](https://github.com/storybookjs/storybook/blob/master/addons/docs/docs/docspage.md)
