@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Sample = props => {
@@ -8,10 +8,15 @@ const Sample = props => {
 
     return (
         <div>
-            <h1>Hello {props.title}</h1>
-            <button onClick={onClickHandler}>Click Me</button>
+            <h1 data-testid="label">Hello {props.title}</h1>
+            <button data-testid="button" onClick={onClickHandler}>Click Me</button>
         </div>
     );
+};
+
+Sample.defaultProps = {
+    title: "World",
+    onClickHandler: () => {},
 };
 
 Sample.propTypes = {

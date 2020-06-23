@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Sample Hello World 1`] = `
+<div>
+  <h1
+    data-testid="label"
+  >
+    Hello 
+    World
+  </h1>
+  <button
+    data-testid="button"
+    onClick={[Function]}
+  >
+    Click Me
+  </button>
+</div>
+`;
+
+exports[`Storyshots Sample Second Way 1`] = `
+<div>
+  <h1
+    data-testid="label"
+  >
+    Hello 
+    Second
+  </h1>
+  <button
+    data-testid="button"
+    onClick={[Function]}
+  >
+    Click Me
+  </button>
+</div>
+`;

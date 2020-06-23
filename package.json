@@ -1,18 +1,12 @@
 {
   "name": "react-gadgets",
   "version": "1.0.0",
-  "description": "React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; Enzyme",
+  "description": "React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library",
   "main": "dist/index.js",
   "source": "src/index.js",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/awarenessxz/react-gadgets.git"
@@ -29,6 +23,13 @@
     "url": "https://github.com/awarenessxz/react-gadgets/issues"
   },
   "homepage": "https://github.com/awarenessxz/react-gadgets#readme",
+  "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "build": "rollup -c",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
@@ -47,14 +48,21 @@
     "@rollup/plugin-node-resolve": "^8.0.1",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/react": "^10.3.0",
+    "@types/jest": "^26.0.0",
     "@types/react": "^16.9.38",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "jest": "25.5.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "rollup": "^2.17.1",
     "rollup-plugin-peer-deps-external": "^2.2.2"
   },
