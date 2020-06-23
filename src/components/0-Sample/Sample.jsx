@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 
 const Sample = props => {
@@ -15,8 +15,7 @@ const Sample = props => {
 };
 
 Sample.defaultProps = {
-    title: "World",
-    onClickHandler: () => {},
+    title: "World"
 };
 
 Sample.propTypes = {
