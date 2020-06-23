@@ -21,8 +21,8 @@ export const actionData = {
 
 // these are the different permutation of the component (AKA Story)
 export const HelloWorld = () => {
-    return <Sample { ...sampleData} {...actionData} />;
+    return <Sample {...sampleData} {...actionData} />;
 };
 export const SecondWay = () => {
-    return <Sample title='Second' onClickHandler={action("Second")} />;
+    return <Sample title='Second' onClickHandler={action('Second')} />;
 };

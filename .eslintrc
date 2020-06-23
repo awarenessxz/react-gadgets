@@ -1,0 +1,57 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "standard",
+        "standard-react",
+        "plugin:prettier/recommended",
+        "prettier/standard",
+        "prettier/react",
+        "plugin:testing-library/recommended",
+        "plugin:testing-library/react",
+        "plugin:jest/recommended"
+    ],
+    "env": {
+        "jest": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "ecmaFeatures": {
+            "legacyDecorators": true,
+            "jsx": true
+        }
+    },
+    "settings": {
+        "react": {
+            "version": "16"
+        },
+        "jest": {
+            "version": 25
+        }
+    },
+    "plugins": ["testing-library", "jest-dom", "jest"],
+    "rules": {
+        "space-before-function-paren": 0,
+        "react/prop-types": 0,
+        "react/jsx-handler-names": 0,
+        "react/jsx-fragments": 0,
+        "react/no-unused-prop-types": 0,
+        "react/object-property-newline": 0,
+        "import/export": 0,
+        "testing-library/await-async-query": "error",
+        "testing-library/no-await-sync-query": "error",
+        "testing-library/no-debug": "warn",
+        "jest-dom/prefer-checked": "error",
+        "jest-dom/prefer-required": "error",
+        "jest-dom/prefer-to-have-attribute": "error",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error"
+    }
+}

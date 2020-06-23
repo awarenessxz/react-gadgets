@@ -6,6 +6,6 @@ module.exports = {
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-transform-arrow-functions',
         '@babel/plugin-transform-template-literals',
-        'babel-plugin-transform-react-remove-prop-types'
-    ]
+        'babel-plugin-transform-react-remove-prop-types',
+    ],
 };
