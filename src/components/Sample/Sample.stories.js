@@ -5,7 +5,7 @@ import Sample from './Sample';
 
 // telling storybook the component we are documenting
 export default {
-    title: 'Welcome/Sample', // how to refer to the component in the sidebar of the Storybook app,
+    title: 'Welcome|Sample', // how to refer to the component in the sidebar of the Storybook app,
     component: Sample, // the component itself
     /*  Exports that end in "Data" are not stories and will be excluded */
     excludeStories: /.*Data$/, // exports in the story file that should not be rendered as stories by Storybook.
