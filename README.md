@@ -8,39 +8,15 @@ This library was created using the following technology decisions:
 - React 
 - ES6 (javascript syntax)
 - Eslint & Prettier
-- Rollup (javascript module bundler) & Babel (javascript transcompiler) for bundling the library and publishing to npm. Below are a brief elaboration on the plugins used:
-    - **rollup-plugin-peer-deps-external** -- preventing Rollup from bundling the peer dependencies we've defined in package.json
-    - **@rollup/plugin-node-resolve** -- efficiently bundles third party dependencies we've installed in node_modules
-    - **@rollup/plugin-commonjs** -- enables transpilation into CommonJS (CJS) format
-    - **@babel/plugin-proposal-class-properties** -- transforms static class properties as well as properties declared with the property initializer syntax
-    - **@babel/plugin-syntax-dynamic-import** -- Allow parsing of import()
-    - **@babel/plugin-proposal-object-rest-spread** -- Compile object rest and spread to ES5
-    - **@babel/plugin-transform-arrow-functions** -- Compile ES2015 arrow functions to ES5
-    - **@babel/plugin-transform-template-literals** -- Compile ES2015 template literals to ES5 
-    - **babel-plugin-transform-react-remove-prop-types** -- Remove unnecessary React propTypes from the production build.
+- Rollup (javascript module bundler) & Babel (javascript transcompiler) for bundling the library and publishing to npm.
 - Storybook (for documenting & developing/testing UI components in isolation).
-    - **@storybook/addon-storyshots** -- for structural testing (aka snapshot testing)
-    - **@storybook/addon-actions** -- for logging actions
-    - **@storybook/addon-docs** -- for documenting component (automatically)
 - Jest & React-Testing-Library (for testing).
+
+Refer to the [configuration guide for more details on how to create new library](./doc/CREATE_NEW_LIBRARY.md)
 
 ## Documentation
 
-Refer to the [documentation](./doc/README.md)
-
-## Configuration Issues that you might face
-
-These are possible problems you might faced when trying to setup the configuration for a custom react library
-
-1. Jest fails to run due to misconfiguration (when running `yarn run test`)
-    - Details: "Jest encountered an unexpected token. This usually means that you are trying to import a file which Jest cannot parse, e.g. it's not plain JavaScript."
-    - Solution: create babel.config.js (add @babel/preset-react)
-    - Reference: [how to solve jest error with create-react-app](https://medium.com/@audreyhal/how-to-solve-jest-error-with-create-react-app-part-1-80f33aa1661a#:~:text=This%20usually%20means%20that%20you,Here's%20what%20you%20can%20do%3A&text=babelrc%20file%20in%20my%20root%20folder.)
-    
-2. Rollup is unable to resolve import (when running `yarn run build`)
-    - Details: "[!] Error: Could not resolve './components/0-Sample/Sample' from src\index.js. Error: Could not resolve './components/0-Sample/Sample' from src\index.js"
-    - Solution: add file extension to resolve
-    - Reference: [Rollup Issue with importing jsx files](https://github.com/rollup/rollup/issues/1052)
+Refer to the [documentation on how to use this library](./doc/README.md)
 
 ## References
 

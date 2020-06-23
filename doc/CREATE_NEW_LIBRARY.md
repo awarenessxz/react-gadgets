@@ -1,13 +1,15 @@
-# Quick Overview on creating your own library
+# Quick overview on creating your own library
 
-## Initial Set up
+## 1. Steps to create a React Library
+
+### Initial Set up
 
 1. Install Yarn
 2. Install Nodejs
 3. Create directory `react-gadgets`
 4. Inside react-gadgets folder, run `npm init -y` in the command line
 
-## Configuring Rollup
+### Configuring Rollup
 
 1. Install React Packages
     - `yarn add --dev react react-dom @types/react prop-types`
@@ -85,7 +87,7 @@
 9. Test if project can build
     - `yarn run build`
 
-## Configuring Storybook
+### Configuring Storybook
 
 1. Add Storybook
     - `npx -p @storybook/cli sb init`
@@ -107,7 +109,7 @@
     - `yarn run storybook`
 5. For the rest of the configuration, refer to the project & [official documentations](https://www.learnstorybook.com/)
 
-## Configuring Jest & React-Testing-Library
+### Configuring Jest & React-Testing-Library
 
 1. Install Jest Packages
     - `yarn add --dev jest babel-jest @types/jest react-test-renderer`
@@ -148,7 +150,38 @@
    }
    ...
     ```
-   
-## References
+
+## 2. Packages / Plugins / Rules
+
+- Rollup & Babel
+    - **rollup-plugin-peer-deps-external** -- preventing Rollup from bundling the peer dependencies we've defined in package.json
+    - **@rollup/plugin-node-resolve** -- efficiently bundles third party dependencies we've installed in node_modules
+    - **@rollup/plugin-commonjs** -- enables transpilation into CommonJS (CJS) format
+    - **@babel/plugin-proposal-class-properties** -- transforms static class properties as well as properties declared with the property initializer syntax
+    - **@babel/plugin-syntax-dynamic-import** -- Allow parsing of import()
+    - **@babel/plugin-proposal-object-rest-spread** -- Compile object rest and spread to ES5
+    - **@babel/plugin-transform-arrow-functions** -- Compile ES2015 arrow functions to ES5
+    - **@babel/plugin-transform-template-literals** -- Compile ES2015 template literals to ES5 
+    - **babel-plugin-transform-react-remove-prop-types** -- Remove unnecessary React propTypes from the production build.
+- Storybook
+    - **@storybook/addon-storyshots** -- for structural testing (aka snapshot testing)
+    - **@storybook/addon-actions** -- for logging actions
+    - **@storybook/addon-docs** -- for documenting component (automatically)
+
+## 3. Configuration Issues that you might face
+
+These are possible problems you might faced when trying to setup the configuration for a custom react library
+
+1. Jest fails to run due to misconfiguration (when running `yarn run test`)
+    - Details: `Jest encountered an unexpected token. This usually means that you are trying to import a file which Jest cannot parse, e.g. it's not plain JavaScript.`
+    - Solution: create babel.config.js (add @babel/preset-react)
+    - Reference: [how to solve jest error with create-react-app](https://medium.com/@audreyhal/how-to-solve-jest-error-with-create-react-app-part-1-80f33aa1661a#:~:text=This%20usually%20means%20that%20you,Here's%20what%20you%20can%20do%3A&text=babelrc%20file%20in%20my%20root%20folder.)
+    
+2. Rollup is unable to resolve import (when running `yarn run build`)
+    - Details: `[!] Error: Could not resolve './components/0-Sample/Sample' from src\index.js.`
+    - Solution: add file extension to resolve
+    - Reference: [Rollup Issue with importing jsx files](https://github.com/rollup/rollup/issues/1052)
+
+## 4. References
 
 The links can be found in the main [README.md](../README.md)

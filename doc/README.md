@@ -63,3 +63,4 @@ Follow the steps below to add additional components to `react-gadgets`
         - ![Prettier-js](images/filewatcher_2.png)
         - ![Eslint-jsx](images/filewatcher_3.png)
         - ![Eslint-js](images/filewatcher_4.png)
+        
