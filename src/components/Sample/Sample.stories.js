@@ -27,11 +27,23 @@ const actionData = {
  * Stories (different permutation of the component)
  ************************************************/
 
-// Note: the first story will be the 'example component' used for DocPage (documentation which are auto generated)
+// Note: the first story will be the 'example component' used for DocPage (documentation which are auto generated from component)
 export const HelloWorld = () => {
     return <Sample {...sampleData} {...actionData} />;
 };
 
 export const SecondWay = () => {
     return <Sample title='Second' onClickHandler={action('Second Way')} />;
+};
+
+/************************************************
+ * Add Description to the stories
+ ************************************************/
+
+SecondWay.story = {
+    parameters: {
+        docs: {
+            storyDescription: 'Another way to create Sample Component',
+        },
+    },
 };

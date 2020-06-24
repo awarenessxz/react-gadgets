@@ -7,17 +7,20 @@ import PropTypes from 'prop-types';
 const SubSample = props => {
     return (
         <Fragment>
-            <button data-testid='button_add' onClick={() => props.onButtonClicks(1)}>
-                Add 1
-            </button>
-            <button data-testid='button_minus' onClick={() => props.onButtonClicks(-1)}>
-                Minus 1
-            </button>
+            <h3>Child Component: </h3>
+            <button onClick={() => props.onButtonClicks(props.value)}>Add {props.value}</button>
+            <button onClick={() => props.onButtonClicks(-props.value)}>Minus {props.value}</button>
         </Fragment>
     );
 };
 
+SubSample.defaultProps = {
+    value: 1,
+};
+
 SubSample.propTypes = {
+    /** Amount of increment/decrement by */
+    value: PropTypes.number,
     /** Button Click Handler */
     onButtonClicks: PropTypes.func.isRequired,
 };

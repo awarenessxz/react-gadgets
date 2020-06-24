@@ -4,14 +4,23 @@ exports[`Testing if component renders properly Snapshot Testing 1`] = `
 <DocumentFragment>
   <div>
     <h1
-      data-testid="label"
+      data-testid="label_id"
     >
       Hello World
     </h1>
+    <p>
+      Type something to enable the Submit button
+    </p>
+    <input
+      data-testid="input_id"
+      placeholder="type something..."
+      value=""
+    />
     <button
-      data-testid="button"
+      data-testid="button_id"
+      disabled=""
     >
-      Click Me
+      Submit
     </button>
   </div>
 </DocumentFragment>

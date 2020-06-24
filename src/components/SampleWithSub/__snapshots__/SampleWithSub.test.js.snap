@@ -3,26 +3,82 @@
 exports[`Testing if component renders properly Snapshot Testing 1`] = `
 <DocumentFragment>
   <div>
-    <h1
-      data-testid="hello"
-    >
-      Hello World
+    <h1>
+      Select User from List Below
     </h1>
+    <p>
+      There are two parts to this Sample: 
+    </p>
+    <ol>
+      <li>
+        Click on the Add / Minus buttons to change index value. (to demo testing with multiple same child component in parent component)
+      </li>
+      <li>
+        Select button to select data from a list. (to demo testing data array and error handling)
+      </li>
+    </ol>
     <h2
       data-testid="counter"
     >
-      Click Counter = 0
+      Index = 0
     </h2>
-    <button
-      data-testid="button_add"
-    >
+    <h3>
+      Child Component: 
+    </h3>
+    <button>
       Add 1
     </button>
-    <button
-      data-testid="button_minus"
-    >
+    <button>
       Minus 1
     </button>
+    <h3>
+      Child Component: 
+    </h3>
+    <button>
+      Add 3
+    </button>
+    <button>
+      Minus 3
+    </button>
+    <hr />
+    <button>
+      Select Row based on index above
+    </button>
+    <ul>
+      <li
+        data-testid="usernames"
+      >
+        Alice
+      </li>
+      <li
+        data-testid="usernames"
+      >
+        Bruce
+      </li>
+      <li
+        data-testid="usernames"
+      >
+        Charlie
+      </li>
+      <li
+        data-testid="usernames"
+      >
+        Donnie
+      </li>
+      <li
+        data-testid="usernames"
+      >
+        Elizabeth
+      </li>
+      <li
+        data-testid="usernames"
+      >
+        Frank
+      </li>
+    </ul>
+    <p>
+      Selected User: Null
+    </p>
   </div>
 </DocumentFragment>
 `;
