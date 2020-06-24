@@ -9,7 +9,7 @@ describe('Testing if component renders properly', () => {
     // Snapshot testing
     it('Snapshot Testing', () => {
         const mockOnClick = jest.fn();
-        const { asFragment } = render(<Sample  onClickHandler={mockOnClick}/>); // Note: refer to api for asFragment
+        const { asFragment } = render(<Sample onClickHandler={mockOnClick} />); // Note: refer to api for asFragment
         expect(asFragment()).toMatchSnapshot();
     });
 

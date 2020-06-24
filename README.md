@@ -1,16 +1,17 @@
 # react-gadgets
 
-`react-gadgets` is a React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library
+`react-gadgets` is a React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library. The intention is not to re-create the wheel, hence we will be using third party libraries and css for the UI design.
 
 ## Overview
 
 This library was created using the following technology decisions:
-- React 
-- ES6 (javascript syntax)
-- Eslint & Prettier
-- Rollup (javascript module bundler) & Babel (javascript transcompiler) for bundling the library and publishing to npm.
-- Storybook (for documenting & developing/testing UI components in isolation).
-- Jest & React-Testing-Library (for testing).
+
+-   React
+-   ES6 (javascript syntax)
+-   Eslint & Prettier
+-   Rollup (javascript module bundler) & Babel (javascript transcompiler) for bundling the library and publishing to npm.
+-   Storybook (for documenting & developing/testing UI components in isolation).
+-   Jest & React-Testing-Library (for testing).
 
 Refer to the [configuration guide for more details on how to create new library](./doc/CREATE_NEW_LIBRARY.md)
 
@@ -46,8 +47,8 @@ Refer to the [documentation on how to use this library](./doc/README.md)
         - [Testing-Library Rules](https://github.com/testing-library/eslint-plugin-testing-library)
         - [Jest Dom Rules](https://github.com/testing-library/eslint-plugin-jest-dom)
         - [Jest Rules](https://www.npmjs.com/package/eslint-plugin-jest)
-       
 2. Writing Test using React-Testing-Library & Jest
+
     - [8 simple steps to start testing react apps using react testing library and jest](https://www.freecodecamp.org/news/8-simple-steps-to-start-testing-react-apps-using-react-testing-library-and-jest/)
     - [Advanced React components mocks with jest and react-testing-library](https://medium.com/@ericdcobb/advanced-react-component-mocks-with-jest-and-react-testing-library-f1ae8838400b)
     - [Test Isolation with React](https://kentcdodds.com/blog/test-isolation-with-react)
