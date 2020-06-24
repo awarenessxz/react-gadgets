@@ -1,5 +1,14 @@
 # Quick overview on creating your own library
 
+This is a quick guide to create a custom reusable react library using:
+- Rollup
+- Sass
+- React
+
+Additional Features includes:
+- Storybook
+- Jest & React-Testing-Library
+
 ## 1. Steps to create a React Library
 
 ### Initial Set up
@@ -76,7 +85,9 @@
         },
         plugins: [
             peerDepsExternal(),
-            resolve(),
+            resolve({
+                extensions: ['.js', '.jsx', '.es6', '.es', '.mjs'],
+            }),
             commonjs(),
             babel({
                 exclude: 'node_modules/**',
@@ -92,7 +103,8 @@
 ### Configuring Storybook
 
 1. Add Storybook
-    - `npx -p @storybook/cli sb init`
+    - `npx -p @storybook/cli sb init --type react`
+    - Make sure the packages `@babel/core` & `babel-loader` are installed
 2. Add Storybook-addons
     - `yarn add --dev @storybook/addon-docs @storybook/addon-storysource`
 3. Update `./storybook/main.js`
@@ -110,6 +122,51 @@
 4. To view the storybook locally
     - `yarn run storybook`
 5. For the rest of the configuration, refer to the project & [official documentations](https://www.learnstorybook.com/)
+    - refer to the next part on css configuration for storybook
+
+### Configuring CSS Style (SASS + CSS Modules)
+
+1. Install packages
+    - `yarn add --dev rollup-plugin-postcss node-sass`
+2. Install packages required for Storybook
+    - `yarn add --dev sass-loader` 
+3. Configure rollup (`rollup.config.js`)
+    ```$xslt
+    ...
+    plugins: [
+        peerDepsExternal(),
+        resolve(),
+        commonjs(),
+        babel({
+            exclude: 'node_modules/**',
+            babelHelpers: 'bundled',
+        }),
+        postcss({
+            extract: 'dist/styles.css',
+            modules: true,
+            use: ['sass'],
+        }),
+    ],
+    ...
+    ```
+4. Customize Storybook’s webpack to add SASS support. Inside `.storybook/main.js`
+    ```$xslt
+    const path = require('path');
+   
+    module.exports = {
+        ...
+        webpackFinal: async config => {
+            config.module.rules.push({
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+                include: path.resolve(__dirname, '../'),
+            });
+    
+            return config;
+        },
+        ...
+    };
+    ```
 
 ### Configuring Jest & React-Testing-Library
 
@@ -136,6 +193,12 @@
        transform: {
            '^.+\\.[t|j]sx?$': 'babel-jest',
            '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
+       },
+       moduleNameMapper: {
+           // Mocks out all these file formats when tests are run
+           '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+               'identity-obj-proxy',
+           '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
        },
     };
     ```
@@ -182,6 +245,7 @@ These are possible problems you might faced when trying to setup the configurati
 
 2. Rollup is unable to resolve import (when running `yarn run build`)
     - Details: `[!] Error: Could not resolve './components/0-Sample/Sample' from src\index.js.`
+
     - Solution: add file extension to resolve
     - Reference: [Rollup Issue with importing jsx files](https://github.com/rollup/rollup/issues/1052)
 

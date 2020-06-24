@@ -6,9 +6,9 @@
 
 #### File naming convention
 
--   React Components / Test / Story (Eg. MyComponent.jsx / MyComponent.test.js / MyComponent.story.js) -- CamelCase
--   Javascript Files (Eg. my-component.js) -- small letter with dashes
--   Markdown (eg. README.md) -- usually CAPS
+-   React Components / Test / Story (Eg. MyComponent.jsx / MyComponent.test.js / MyComponent.story.js) -- **CamelCase**
+-   Javascript Files (Eg. my-component.js) -- **small letter with dashes**
+-   Markdown (eg. README.md) -- **usually CAPS**
 
 #### Possible Issues
 
@@ -21,39 +21,34 @@ These are possible issues you might faced when coding your React components
 
 #### Writing Test Cases
 
--   we are using `react-test-library` which is meant for replicating user's actions. Hence, the test cases should revolve around that
+-   the library is tested using a combination of `jest` and `react-testing-library`. In particular, `react-testing-library` is meant for replicating user's actions. Hence, test cases should revolve around that
 -   use `describe` to group test cases
--   `structural testing` is automatically generated using `@storybook/addon-storyshots` but you can always follow the sample do `snapshot testing`
+-   `structural testing` is automatically generated using `@storybook/addon-storyshots` but developers can always follow the sample do `snapshot testing`
 -   use `data-testid` in your HTML Dom for easy reference when testing
--   for components with sub components, follow this logic
+-   for components with child components, follow this logic
     -   **E2E test (on Parent) is the preferred approach, as this is how the user experiences the functionality.**
     -   **If Child contains local logic which is not exposed to the Parent via props - like internal state management - then it makes sense to test the Child separately to cover that extra logic.**
 
-##### Possible Issues with Testing
-
-1. Parent vs Child Testing
-2. jest.mock(modules) only works outside of describe/it/test functions
-3. getTestById will not work if there are multiple child components in parent component
-
 ### 2. Running the Library Locally
+
+Before you begin...
+- Run `yarn install` to install the packages
 
 #### Creating new component
 
 Follow the steps below to add additional components to `react-gadgets`
 
 1. Create a folder for your component inside `src/components` folder
-2. Using Test-Driven Development approach, you should create test cases first. Create a unit test `<Name>.test.js`
-    - Run `yarn test:watch` to run the unit tests
+2. Using Test-Driven Development approach [optional], create test cases first before coding the component. Create a unit test `<Name>.test.js`
+    - Run `yarn test:watch` to run the unit tests -- use this when developing
     - Run `yarn test` to get test coverage
 3. Create your React Component `<Name>.jsx`
-4. If you require CSS for your components, create a css module file `<Name>.module.css`
-5. To check on your React Component locally, create a story `<Name>.story.js`
+4. If you require CSS for your components, create a scss file `<Name>.scss`
+5. To view your React Component locally, create a story `<Name>.stories.js`
     - Run `yarn run storybook` && check your component in `http://localhost:6006/`
     - Note:
         - Changes are usually automatically reloaded
         - Documentations in storybook are automatically generated thanks to `@storybook/addon-docs`
-
-To run this library locally, clone the repo. - Run `yarn install` to install the packages
 
 #### Testing
 

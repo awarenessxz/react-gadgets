@@ -1,6 +1,6 @@
 # react-gadgets
 
-`react-gadgets` is a React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library. The intention is not to re-create the wheel, hence we will be using third party libraries and css for the UI design.
+`react-gadgets` is a React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library. The intention is not to re-create the wheel, hence most of the React Component are created using third party libraries and css for the UI design.
 
 ## Overview
 
@@ -12,6 +12,7 @@ This library was created using the following technology decisions:
 -   Rollup (javascript module bundler) & Babel (javascript transcompiler) for bundling the library and publishing to npm.
 -   Storybook (for documenting & developing/testing UI components in isolation).
 -   Jest & React-Testing-Library (for testing).
+-   CSS Modules & SASS (for styling)
 
 Refer to the [configuration guide for more details on how to create new library](./doc/CREATE_NEW_LIBRARY.md)
 
@@ -47,21 +48,32 @@ Refer to the [documentation on how to use this library](./doc/README.md)
         - [Testing-Library Rules](https://github.com/testing-library/eslint-plugin-testing-library)
         - [Jest Dom Rules](https://github.com/testing-library/eslint-plugin-jest-dom)
         - [Jest Rules](https://www.npmjs.com/package/eslint-plugin-jest)
+    - Styling (CSS)
+        - [CSS Modules in React](https://programmingwithmosh.com/react/css-modules-react/)
+        - [Bundle Libraries With SCSS and CSS Modules Using Rollup](https://florian.ec/blog/rollup-scss-css-modules/)
+        
 2. Writing Test using React-Testing-Library & Jest
-
-    - [8 simple steps to start testing react apps using react testing library and jest](https://www.freecodecamp.org/news/8-simple-steps-to-start-testing-react-apps-using-react-testing-library-and-jest/)
+    - [8 simple steps to start testing react apps using react-testing-library and jest](https://www.freecodecamp.org/news/8-simple-steps-to-start-testing-react-apps-using-react-testing-library-and-jest/)
     - [Advanced React components mocks with jest and react-testing-library](https://medium.com/@ericdcobb/advanced-react-component-mocks-with-jest-and-react-testing-library-f1ae8838400b)
     - [Test Isolation with React](https://kentcdodds.com/blog/test-isolation-with-react)
     - [Understanding Jest Coverage Report](https://medium.com/@krishankantsinghal/how-to-read-test-coverage-report-generated-using-jest-c2d1cb70da8b)
     - [Understanding Jest Mock](https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c)
     - [Bypassing Jest Mock](https://jestjs.io/docs/en/bypassing-module-mocks)
     - [Testing Parent and Child seperately](https://github.com/testing-library/react-testing-library/issues/167)
+    - [How to write functional tests with react-testing-library](https://blog.echobind.com/writing-functional-tests-with-react-testing-library-part-1-470870ee1a6)
+    - [Common mistakes with react-testing-library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)
+    - [react-testing-library cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
+    - [react-testing-library which query to use when testing](https://testing-library.com/docs/guide-which-query)
+    - [list of query roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Roles)
 
 3. Writing Storybook Documentation
     - [Storybook DocsPage (automatically populated)](https://github.com/storybookjs/storybook/blob/master/addons/docs/docs/docspage.md)
     - [Storybook Docs MDX (writing custom documentation)](https://github.com/storybookjs/storybook/blob/master/addons/docs/docs/mdx.md)
 
 ## Credits
+
+- [Harvey Delaney](https://github.com/HarveyD)
+- [Jebus](https://medium.com/@jebus)
 
 ## License
 
