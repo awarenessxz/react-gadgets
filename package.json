@@ -6,7 +6,8 @@
     "module": "dist/esm/index.js",
     "source": {
         "index": "./src/index.js",
-        "sample": "./src/components/Sample/Sample"
+        "Sample": "./src/components/Sample/Sample",
+        "SampleWithSub": "./src/components/SampleWithSub/SampleWithSub"
     },
     "target": {
         "cjs": "dist/cjs",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Sample.scss';
+import styles from './Sample.scss';
 
 /**
  * Sample Description of the Component (Note: this comment is used in the auto generated documentation)
@@ -21,7 +21,7 @@ const Sample = props => {
     };
 
     return (
-        <div className='test-component'>
+        <div className={styles.test_component}>
             <h1 data-testid='label_id'>Hello {props.title}</h1>
             <p>Type something to enable the Submit button</p>
             <input

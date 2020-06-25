@@ -22,18 +22,19 @@ export default {
     ],
     plugins: [
         peerDepsExternal(),
-        resolve({
-            extensions: ['.js', '.jsx', '.es6', '.es', '.mjs'],
+        postcss({
+            modules: true,
+            extensions: ['css', 'scss'],
+            use: ['sass'],
         }),
-        commonjs(),
         babel({
+            include: ['src/**/*'],
             exclude: ['node_modules/**', 'dist', 'src/**/*.test.js*', 'src/**/*.stories.*'],
             babelHelpers: 'bundled',
         }),
-        postcss({
-            extract: 'styles.css',
-            modules: true,
-            use: ['sass'],
+        resolve({
+            extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.node', '.json'],
         }),
+        commonjs(),
     ],
 };

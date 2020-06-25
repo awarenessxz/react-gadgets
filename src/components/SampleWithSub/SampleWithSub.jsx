@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './SampleWithSub.scss';
 
 import SubSample from './SubSample/SubSample';
 
@@ -23,7 +24,7 @@ const SampleWithSub = props => {
     };
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             <h1>Select User from List Below</h1>
             <p>There are two parts to this Sample: </p>
             <ol>
@@ -40,8 +41,13 @@ const SampleWithSub = props => {
             <SubSample onButtonClicks={onCounterChange} />
             <SubSample onButtonClicks={onCounterChange} value={3} />
             <hr />
-            <button onClick={onSelectClick}>Select Row based on index above</button>
-            <ul>
+            <div>
+                <p className={styles.wrapper2}>
+                    Selected User: <strong>{selection}</strong>
+                </p>
+                <button onClick={onSelectClick}>Select Row based on index above</button>
+            </div>
+            <ol>
                 {props.testingList.map((item, index) => {
                     return (
                         <li key={index} data-testid='usernames'>
@@ -49,8 +55,7 @@ const SampleWithSub = props => {
                         </li>
                     );
                 })}
-            </ul>
-            <p>Selected User: {selection}</p>
+            </ol>
         </div>
     );
 };

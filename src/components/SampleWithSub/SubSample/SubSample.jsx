@@ -1,16 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './SubSample.scss';
 
 /**
  * Sub Sample Components
  */
 const SubSample = props => {
     return (
-        <Fragment>
+        <div className={styles.wrapper}>
             <h3>Child Component: </h3>
             <button onClick={() => props.onButtonClicks(props.value)}>Add {props.value}</button>
             <button onClick={() => props.onButtonClicks(-props.value)}>Minus {props.value}</button>
-        </Fragment>
+        </div>
     );
 };
 
