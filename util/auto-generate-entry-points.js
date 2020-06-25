@@ -31,7 +31,7 @@ for (line of lines) {
                 .trim()
                 .replace(/['"]+/g, '')
         );
-    entryPoints[entry.toLowerCase()] = entryPath;
+    entryPoints[entry] = entryPath;
 }
 console.info('\x1b[32m%s\x1b[0m', 'Generating entry points...');
 console.log(JSON.stringify(entryPoints, null, 2));
