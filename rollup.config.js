@@ -27,7 +27,7 @@ export default {
         }),
         commonjs(),
         babel({
-            exclude: 'node_modules/**',
+            exclude: ['node_modules/**', 'dist', 'src/**/*.test.js*', 'src/**/*.stories.*'],
             babelHelpers: 'bundled',
         }),
         postcss({
