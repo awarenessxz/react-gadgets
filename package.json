@@ -2,10 +2,19 @@
     "name": "react-gadgets",
     "version": "1.0.0",
     "description": "React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library",
-    "main": "dist/index.js",
-    "source": "src/index.js",
+    "main": "dist/cjs/bundle.js",
+    "module": "dist/esm/bundle.js",
+    "source": {
+        "index": "./src/index.js",
+        "sample": "./src/components/Sample/Sample"
+    },
+    "target": {
+        "cjs": "dist/cjs",
+        "esm": "dist/esm"
+    },
     "files": [
-        "dist"
+        "dist/cjs/*",
+        "dist/esm/*"
     ],
     "repository": {
         "type": "git",
@@ -29,7 +38,9 @@
     "scripts": {
         "test": "jest --coverage",
         "test:watch": "jest --watch",
-        "build": "rollup -c",
+        "build": "yarn run build:clean && yarn run build:generate && rollup -c",
+        "build:clean": "rm -rf dist",
+        "build:generate": "node ./util/auto-generate-entry-points ./src/index.js",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "lint": "eslint .",

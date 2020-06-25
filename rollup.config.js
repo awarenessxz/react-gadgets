@@ -8,11 +8,18 @@ import packageJson from './package.json';
 
 export default {
     input: packageJson.source,
-    output: {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: false,
-    },
+    output: [
+        {
+            dir: packageJson.target.cjs,
+            format: 'cjs',
+            sourcemap: true,
+        },
+        {
+            dir: packageJson.target.esm,
+            format: 'esm',
+            sourcemap: true,
+        },
+    ],
     plugins: [
         peerDepsExternal(),
         resolve({
