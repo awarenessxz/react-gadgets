@@ -86,7 +86,7 @@ Additional Features includes:
         plugins: [
             peerDepsExternal(),
             resolve({
-                extensions: ['.js', '.jsx', '.es6', '.es', '.mjs'],
+                extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', 'node'],
             }),
             commonjs(),
             babel({
@@ -135,21 +135,16 @@ Additional Features includes:
     ...
     plugins: [
         peerDepsExternal(),
-        resolve(),
-        commonjs(),
-        babel({
-            exclude: 'node_modules/**',
-            babelHelpers: 'bundled',
-        }),
         postcss({
-            extract: 'dist/styles.css',
             modules: true,
+            extensions: ['css', 'scss'],
             use: ['sass'],
         }),
+        ...
     ],
     ...
     ```
-4. Customize Storybook’s webpack to add SASS support. Inside `.storybook/main.js`
+4. Customize Storybook’s webpack to add SASS & CSS module support. Inside `.storybook/main.js`
     ```$xslt
     const path = require('path');
    
@@ -158,7 +153,16 @@ Additional Features includes:
         webpackFinal: async config => {
             config.module.rules.push({
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                        },
+                    },
+                    'sass-loader',
+                ],
                 include: path.resolve(__dirname, '../'),
             });
     

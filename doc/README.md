@@ -21,11 +21,11 @@ These are possible issues you might faced when coding your React components
             
 #### Writing Test Cases
 
--   the library is tested using a combination of `jest` and `react-testing-library`. In particular, `react-testing-library` is meant for replicating user's actions. Hence, test cases should revolve around that
--   use `describe` to group test cases
--   `structural testing` is automatically generated using `@storybook/addon-storyshots` but developers can always follow the sample do `snapshot testing`
--   use `data-testid` in your HTML Dom for easy reference when testing
--   for components with child components, follow this logic
+-   The library is tested using a combination of `jest` and `react-testing-library`. In particular, `react-testing-library` is meant for replicating user's actions. Hence, test cases should revolve around that
+-   Use `describe` to group test cases
+-   `Structural Testing` is automatically generated using `@storybook/addon-storyshots` but developers can always follow the sample do `snapshot testing`
+-   Use `data-testid` in your HTML Dom for easy reference when testing
+-   For components with child components, follow this logic
     -   **E2E test (on Parent) is the preferred approach, as this is how the user experiences the functionality.**
     -   **If Child contains local logic which is not exposed to the Parent via props - like internal state management - then it makes sense to test the Child separately to cover that extra logic.**
 
@@ -110,7 +110,7 @@ Instead of publishing to NPM to test the library, you can follow these steps to 
 3. Inside `example` project folder
     - inside `app.js`, import the component (eg. `import { Sample } from 'react-gadgets';`) and add the component (`<Sample />`)
     - start the application `yarn start`
-4. you should receive the following error 
+4. You should receive the following error 
     ```$xslt
     Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
     1. You might have mismatching versions of React and the renderer (such as React DOM)
@@ -129,7 +129,7 @@ Instead of publishing to NPM to test the library, you can follow these steps to 
             - `yarn run build`
         3. In your project (`example`)
             - `yarn start`
-5. happy testing
+5. Happy testing
 
 ## Setting up Project in IntelliJ [Optional]
 

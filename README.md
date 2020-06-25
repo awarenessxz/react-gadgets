@@ -18,9 +18,11 @@ Refer to the [configuration guide for more details on how to create new library]
 
 ## Usage
 
-1. Import the library
-    - `import { Sample } from 'react-gadgets';`
-    - `import Sample from 'react-gadgets/dist/sample';` -- direct import
+1. Installing the library
+    - `yarn add react-gadgets`
+    - Import the Components
+        - `import { Sample } from 'react-gadgets';`
+        - `import Sample from 'react-gadgets/dist/esm/Sample';` -- direct import
 
 2. [Using the library locally](./doc/README.md#4-testing-the-library-locally)
 
@@ -43,6 +45,7 @@ Refer to the [documentation](./doc/README.md) for more details.
         - [Rollup Documentation](https://rollupjs.org/guide/en/#creating-your-first-bundle)
     - Storybook
         - [Storybook Documentation](https://storybook.js.org/docs/basics/introduction/)
+        - [Storybook CSS Modules Not Showing](https://github.com/storybookjs/storybook/issues/6055)
     - Testing
         - [Enzyme vs React-Testing-Library vs Cypress](https://medium.com/javascript-in-plain-english/i-tested-a-react-app-with-jest-testing-library-and-cypress-here-are-the-differences-3192eae03850)
         - [Storybook Testing](https://storybook.js.org/docs/testing/react-ui-testing/)
@@ -59,11 +62,13 @@ Refer to the [documentation](./doc/README.md) for more details.
     - Styling (CSS)
         - [CSS Modules in React](https://programmingwithmosh.com/react/css-modules-react/)
         - [Bundle Libraries With SCSS and CSS Modules Using Rollup](https://florian.ec/blog/rollup-scss-css-modules/)
+        - [Bundle Stylesheets and add live reload with rollup](https://www.learnwithjason.dev/blog/learn-rollup-css/)
     - Code Splitting
         - [Code Splitting for libraries bundling for npm with rollup](https://levelup.gitconnected.com/code-splitting-for-libraries-bundling-for-npm-with-rollup-1-0-2522c7437697)
     - Publishing to NPM / Checking it out locally
         - [Complete guide to publishing a React package to npm](https://blog.logrocket.com/the-complete-guide-to-publishing-a-react-package-to-npm/)
         - [React hooks in react library giving Invalid hook call error](https://stackoverflow.com/questions/56021112/react-hooks-in-react-library-giving-invalid-hook-call-error)
+        - [Setting a private npm registry publishing ci/cd pipeline](https://blog.harveydelaney.com/setting-up-a-private-npm-registry-publishing-ci-cd-pipeline/)
     - Scripts
         - [Updating package.json](https://stackoverflow.com/questions/10685998/how-to-update-a-value-in-a-json-file-and-save-it-through-node-js)
         - [How can I use an es6 import in node](https://stackoverflow.com/questions/45854169/how-can-i-use-an-es6-import-in-node)
