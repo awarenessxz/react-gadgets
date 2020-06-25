@@ -90,7 +90,7 @@ Additional Features includes:
             }),
             commonjs(),
             babel({
-                exclude: 'node_modules/**',
+                exclude: ['node_modules/**', 'dist', 'src/**/*.test.js*', 'src/**/*.stories.*'],
                 babelHelpers: 'bundled',
             }),
         ],
@@ -233,7 +233,57 @@ Additional Features includes:
     -   **@storybook/addon-actions** -- for logging actions
     -   **@storybook/addon-docs** -- for documenting component (automatically)
 
-## 3. Configuration Issues that you might face
+## 3. Additional Configuration
+
+### Code-Splitting [Optional]
+
+This feature allows you to split your code into various bundles which can then be loaded on demand or in parallel. **TLDR:** Code Splitting allows user to direct import the components that they need from the library instead of all the components. This is a popular approach as it reduces the amount of javascript codes sent to the client. 
+
+1. Update `rollup.config.js` to support different formats of output. We are using `dir` instead of `files` as there will be more than one bundle for each format.
+    ```$xslt
+    ...
+    input: packageJson.source,
+    output: [
+        {
+            dir: packageJson.target.cjs,
+            format: 'cjs',
+            sourcemap: true,
+        },
+        {
+            dir: packageJson.target.esm,
+            format: 'esm',
+            sourcemap: true,
+        },
+    ],
+    ...
+    ```
+2. Update `package.json`. If a tool can support `ECMAScript`, it'll use `module` else it'll use `main`. 
+    ```$$xslt
+    ...
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "source": {
+        "index": "./src/index.js",
+        "sample": "./src/components/Sample/Sample.jsx"
+        "samplewithsub": "./src/components/SampleWithSub/SampleWithSub.jsx"
+    },
+    "target": {
+        "cjs": "dist/cjs",
+        "esm": "dist/esm"
+    },
+    "files": [
+        "dist/cjs/*",
+        "dist/esm/*"
+    ],
+    ...
+    ```
+3. Build the library `yarn run build` and you should see more than one bundle.js generated.
+
+4. When using the library, 
+    - `import { Sample } from 'react-gadgets';` -- import all components inside the library
+    - `import Sample from 'react-gadgets/esm/sample';` -- import only sample component
+    
+## 4. Configuration Issues that you might face
 
 These are possible problems you might faced when trying to setup the configuration for a custom react library
 
@@ -245,10 +295,9 @@ These are possible problems you might faced when trying to setup the configurati
 
 2. Rollup is unable to resolve import (when running `yarn run build`)
     - Details: `[!] Error: Could not resolve './components/0-Sample/Sample' from src\index.js.`
-
     - Solution: add file extension to resolve
     - Reference: [Rollup Issue with importing jsx files](https://github.com/rollup/rollup/issues/1052)
 
-## 4. References
+## 5. References
 
 The links can be found in the main [README.md](../README.md)

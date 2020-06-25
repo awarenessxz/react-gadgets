@@ -18,9 +18,15 @@ Refer to the [configuration guide for more details on how to create new library]
 
 ## Usage
 
+1. Import the library
+    - `import { Sample } from 'react-gadgets';`
+    - `import Sample from 'react-gadgets/dist/sample';` -- direct import
+
+2. [Using the library locally](./doc/README.md#4-testing-the-library-locally)
+
 ## Development
 
-Refer to the [documentation on how to use this library](./doc/README.md)
+Refer to the [documentation](./doc/README.md) for more details.
 
 ## References
 
@@ -28,6 +34,8 @@ Refer to the [documentation on how to use this library](./doc/README.md)
     - [How to create react component library (typescript + rollup + sass + storybook)](https://blog.harveydelaney.com/creating-your-own-react-component-library/)
     - [How to create react component library](https://medium.com/better-programming/lets-build-react-components-library-part-3-b2e7aec478a2)
     - [How to set up react component library with rollup](https://medium.com/grandata-engineering/how-i-set-up-a-react-component-library-with-rollup-be6ccb700333)
+    - [Developing & publishing React component library to NPM (styled-components + Typescript)](https://medium.com/@xfor/developing-publishing-react-component-library-to-npm-styled-components-typescript-cc8274305f5a)
+    - [How to write and build JS libraries in 2018](https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953)
     - Babel + Rollup
         - [Setting up React, Webpack and Babel](https://www.valentinog.com/blog/babel/)
         - [React Rollup Boilerplate](https://github.com/KaiHotz/react-rollup-boilerplate)
@@ -51,7 +59,16 @@ Refer to the [documentation on how to use this library](./doc/README.md)
     - Styling (CSS)
         - [CSS Modules in React](https://programmingwithmosh.com/react/css-modules-react/)
         - [Bundle Libraries With SCSS and CSS Modules Using Rollup](https://florian.ec/blog/rollup-scss-css-modules/)
-        
+    - Code Splitting
+        - [Code Splitting for libraries bundling for npm with rollup](https://levelup.gitconnected.com/code-splitting-for-libraries-bundling-for-npm-with-rollup-1-0-2522c7437697)
+    - Publishing to NPM / Checking it out locally
+        - [Complete guide to publishing a React package to npm](https://blog.logrocket.com/the-complete-guide-to-publishing-a-react-package-to-npm/)
+        - [React hooks in react library giving Invalid hook call error](https://stackoverflow.com/questions/56021112/react-hooks-in-react-library-giving-invalid-hook-call-error)
+    - Scripts
+        - [Updating package.json](https://stackoverflow.com/questions/10685998/how-to-update-a-value-in-a-json-file-and-save-it-through-node-js)
+        - [How can I use an es6 import in node](https://stackoverflow.com/questions/45854169/how-can-i-use-an-es6-import-in-node)
+        - [Change nodejs console log colour](https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color)
+
 2. Writing Test using React-Testing-Library & Jest
     - [8 simple steps to start testing react apps using react-testing-library and jest](https://www.freecodecamp.org/news/8-simple-steps-to-start-testing-react-apps-using-react-testing-library-and-jest/)
     - [Advanced React components mocks with jest and react-testing-library](https://medium.com/@ericdcobb/advanced-react-component-mocks-with-jest-and-react-testing-library-f1ae8838400b)

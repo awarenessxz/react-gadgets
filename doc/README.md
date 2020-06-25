@@ -15,10 +15,10 @@
 These are possible issues you might faced when coding your React components
 
 1. jest.mock factory doesn't work inside a test.
-    - Details: `using jest.mock() to mock a React component does not work if you place it inside test/it/describe functions`
-    - Solution:
+    - **Details:** using jest.mock() to mock a React component does not work if you place it inside test/it/describe functions
+    - **Solution:**
     - Reference: [jest.mock factory doesn't work inside a test](https://github.com/facebook/jest/issues/2582)
-
+            
 #### Writing Test Cases
 
 -   the library is tested using a combination of `jest` and `react-testing-library`. In particular, `react-testing-library` is meant for replicating user's actions. Hence, test cases should revolve around that
@@ -52,10 +52,10 @@ Follow the steps below to add additional components to `react-gadgets`
 
 #### Testing
 
-1. `yarn run test` : runs jest and check for test coverage (should be used in your CI/CD pipeline)
-2. `yarn run test:watch`: should be used when you're running your tests locally (they will re-run whenever a file is changed).
+1. `yarn run test` -- runs jest and check for test coverage (should be used in your CI/CD pipeline)
+2. `yarn run test:watch` -- should be used when you're running your tests locally (they will re-run whenever a file is changed).
     - _Note: press `u` to update snapshot if you make changes to any components_
-3. `yarn run lint` : check for code consistency
+3. `yarn run lint` -- check for code consistency
 
 ###### Additional Testing Notes
 
@@ -86,12 +86,50 @@ Follow the steps below to add additional components to `react-gadgets`
 1. `yarn install` -- install the node packages
 2. `yarn run build` -- build the library
 
+##### Notes:
+
+- `react-gadgets` outputs two bundle in two different javascript module formats (`CommonJS (cjs)`, `ES Modules (esm)`) 
+- `code-spliting`
+    - Rollup accepts multiple entry point when bundling the library to allow user to import only the necessary chunks of the library instead of importing the entire library when they only require 1 component.
+    - However, these entry points have to be added in manually when creating new components. To simplify the process, a simple script (`auto-generate-entry-points`) is run automatically when building the library to extract all the entry points specified inside `src/index.js`
+
 #### Storybook
 
 1. `yarn run storybook` -- run storybook
 2. `http://localhost:6006` -- open in internet browser to view storybook locally
 
 ### 3. Publishing to NPM
+
+### 4. Testing the library locally
+
+Instead of publishing to NPM to test the library, you can follow these steps to test the library locally before publishing.
+
+1. create a project using `npx create-react-app example`
+2. Inside `react-gadgets` folder
+    - use `yarn link` to create a link to the library
+3. Inside `example` project folder
+    - inside `app.js`, import the component (eg. `import { Sample } from 'react-gadgets';`) and add the component (`<Sample />`)
+    - start the application `yarn start`
+4. you should receive the following error 
+    ```$xslt
+    Error: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+    1. You might have mismatching versions of React and the renderer (such as React DOM)
+    2. You might be breaking the Rules of Hooks
+    3. You might have more than one copy of React in the same app
+    See https://fb.me/react-invalid-hook-call for tips about how to debug and fix this problem.
+    ```
+    - **Solution:** This is because the library is using a different version of React from your existing project. To resolve, follow the steps:
+        1. In your project (`example`)
+            - `yarn install`
+            - `cd node_modules/react && yarn link`
+            - `cd node_modules/react-dom && yarn link`
+        2. In your library (`react-gadgets`)
+            - `yarn link react`
+            - `yarn link react-dom` 
+            - `yarn run build`
+        3. In your project (`example`)
+            - `yarn start`
+5. happy testing
 
 ## Setting up Project in IntelliJ [Optional]
 
