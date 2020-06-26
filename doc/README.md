@@ -4,13 +4,13 @@
 
 ### 1. Important Notes!
 
-#### File naming convention
+#### 1.1 File naming convention
 
 -   React Components / Test / Story (Eg. MyComponent.jsx / MyComponent.test.js / MyComponent.story.js) -- **CamelCase**
 -   Javascript Files (Eg. my-component.js) -- **small letter with dashes**
 -   Markdown (eg. README.md) -- **usually CAPS**
 
-#### Possible Issues
+#### 1.2 Possible Issues
 
 These are possible issues you might faced when coding your React components
 
@@ -19,7 +19,7 @@ These are possible issues you might faced when coding your React components
     - **Solution:**
     - Reference: [jest.mock factory doesn't work inside a test](https://github.com/facebook/jest/issues/2582)
             
-#### Writing Test Cases
+#### 1.3 Writing Test Cases
 
 -   The library is tested using a combination of `jest` and `react-testing-library`. In particular, `react-testing-library` is meant for replicating user's actions. Hence, test cases should revolve around that
 -   Use `describe` to group test cases
@@ -34,9 +34,16 @@ These are possible issues you might faced when coding your React components
 Before you begin...
 - Run `yarn install` to install the packages
 
-#### Creating new component
+#### 2.1 Creating new component
 
-Follow the steps below to add additional components to `react-gadgets`
+##### Quick Start
+
+- Run the script using `yarn run create-new-component <FileName>` to generate a component folder.
+- _Note: FileName should be **camel case**_
+
+##### Manual Way
+
+Follow the steps below to add additional components to `react-gadgets`:
 
 1. Create a folder for your component inside `src/components` folder
 2. Using Test-Driven Development approach [optional], create test cases first before coding the component. Create a unit test `<Name>.test.js`
@@ -50,7 +57,7 @@ Follow the steps below to add additional components to `react-gadgets`
         - Changes are usually automatically reloaded
         - Documentations in storybook are automatically generated thanks to `@storybook/addon-docs`
 
-#### Testing
+#### 2.2 Testing
 
 1. `yarn run test` -- runs jest and check for test coverage (should be used in your CI/CD pipeline)
 2. `yarn run test:watch` -- should be used when you're running your tests locally (they will re-run whenever a file is changed).
@@ -81,7 +88,7 @@ Follow the steps below to add additional components to `react-gadgets`
         -   **Branch Coverage (% Branch)** -- Has each branch of each control structure (such as if-else / switch) been executed?
         -   **Line Coverage(% Lines)** -- Has each executable line in the source file been executed?
 
-#### Building
+#### 2.3 Building
 
 1. `yarn install` -- install the node packages
 2. `yarn run build` -- build the library
@@ -93,7 +100,7 @@ Follow the steps below to add additional components to `react-gadgets`
     - Rollup accepts multiple entry point when bundling the library to allow user to import only the necessary chunks of the library instead of importing the entire library when they only require 1 component.
     - However, these entry points have to be added in manually when creating new components. To simplify the process, a simple script (`auto-generate-entry-points`) is run automatically when building the library to extract all the entry points specified inside `src/index.js`
 
-#### Storybook
+#### 2.4 Storybook
 
 1. `yarn run storybook` -- run storybook
 2. `http://localhost:6006` -- open in internet browser to view storybook locally
@@ -107,7 +114,10 @@ Instead of publishing to NPM to test the library, you can follow these steps to 
 1. create a project using `npx create-react-app example`
 2. Inside `react-gadgets` folder
     - use `yarn link` to create a link to the library
+    - build the library `yarn run build`
 3. Inside `example` project folder
+    - run `yarn link react-gadgets` -- to link the library to example
+    - run `yarn add react-gadgets` -- to install the library
     - inside `app.js`, import the component (eg. `import { Sample } from 'react-gadgets';`) and add the component (`<Sample />`)
     - start the application `yarn start`
 4. You should receive the following error 
@@ -120,7 +130,6 @@ Instead of publishing to NPM to test the library, you can follow these steps to 
     ```
     - **Solution:** This is because the library is using a different version of React from your existing project. To resolve, follow the steps:
         1. In your project (`example`)
-            - `yarn install`
             - `cd node_modules/react && yarn link`
             - `cd node_modules/react-dom && yarn link`
         2. In your library (`react-gadgets`)

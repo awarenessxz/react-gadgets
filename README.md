@@ -1,6 +1,6 @@
 # react-gadgets
 
-`react-gadgets` is a React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library. The intention is not to re-create the wheel, hence most of the React Component are created using third party libraries and css for the UI design.
+`react-gadgets` is a React Library which contains a collection of custom reusable React Components, documented with storybook and tested using Jest &amp; React-Testing-Library. The intention is not to re-create the wheel, hence most of the React Component are created using third party libraries and css.
 
 ## Overview
 
@@ -36,7 +36,6 @@ Refer to the [documentation](./doc/README.md) for more details.
     - [How to create react component library (typescript + rollup + sass + storybook)](https://blog.harveydelaney.com/creating-your-own-react-component-library/)
     - [How to create react component library](https://medium.com/better-programming/lets-build-react-components-library-part-3-b2e7aec478a2)
     - [How to set up react component library with rollup](https://medium.com/grandata-engineering/how-i-set-up-a-react-component-library-with-rollup-be6ccb700333)
-    - [Developing & publishing React component library to NPM (styled-components + Typescript)](https://medium.com/@xfor/developing-publishing-react-component-library-to-npm-styled-components-typescript-cc8274305f5a)
     - [How to write and build JS libraries in 2018](https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953)
     - Babel + Rollup
         - [Setting up React, Webpack and Babel](https://www.valentinog.com/blog/babel/)
@@ -94,7 +93,7 @@ Refer to the [documentation](./doc/README.md) for more details.
 
 ## Credits
 
-- [Harvey Delaney](https://github.com/HarveyD)
+- [Harvey Delaney](https://github.com/HarveyD/react-component-library)
 - [Jebus](https://medium.com/@jebus)
 
 ## License

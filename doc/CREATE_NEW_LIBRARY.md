@@ -90,7 +90,7 @@ Additional Features includes:
             }),
             commonjs(),
             babel({
-                exclude: ['node_modules/**', 'dist', 'src/**/*.test.js*', 'src/**/*.stories.*'],
+                exclude: ['node_modules/**', 'dist'],
                 babelHelpers: 'bundled',
             }),
         ],
@@ -119,9 +119,21 @@ Additional Features includes:
        ],
     };
     ```
-4. To view the storybook locally
+4. Update `rollup.config.js`
+    ```$xslt
+    plugins: [
+        ...
+        babel({
+            ...
+            exclude: ['node_modules/**', 'dist', 'src/**/*.stories.*'],
+            ...
+        }),
+        ...
+    ],
+    ```
+5. To view the storybook locally
     - `yarn run storybook`
-5. For the rest of the configuration, refer to the project & [official documentations](https://www.learnstorybook.com/)
+6. For the rest of the configuration, refer to the project & [official documentations](https://www.learnstorybook.com/)
     - refer to the next part on css configuration for storybook
 
 ### Configuring CSS Style (SASS + CSS Modules)
@@ -178,7 +190,9 @@ Additional Features includes:
     - `yarn add --dev jest babel-jest @types/jest react-test-renderer`
 2. Install react-testing-library Packages
     - `yarn add --dev @testing-library/react @testing-library/jest-dom`
-3. Create configuration file `jest.config.js`
+3. Install other Packages
+    - `yarn add --dev identity-obj-proxy` -- required for mocking css modules
+4. Create configuration file `jest.config.js`
     ```$xslt
     module.exports = {
        rootDir: './src',
@@ -206,19 +220,31 @@ Additional Features includes:
        },
     };
     ```
-4. Create jest setup file `src/tests/jest.setup.js`
+5. Create jest setup file `src/tests/jest.setup.js`
     ```$xslt
     import '@testing-library/jest-dom';
     ```
-5. Inside `package.json`, add the test script
+6. Inside `package.json`, add the test script
     ```$xslt
     ...
     "scripts": {
-        "test": "jest --coverage"
+        "test": "jest"
         "test:watch": "jest --watch"
     }
     ...
     ```
+7. Update `rollup.config.js`
+   ```$xslt
+   plugins: [
+       ...
+       babel({
+           ...
+           exclude: ['node_modules/**', 'dist', 'src/**/*.test.js*', 'src/**/*.stories.*'],
+           ...
+       }),
+       ...
+   ],
+       ```
 
 ## 2. Packages / Plugins / Rules
 
@@ -285,7 +311,7 @@ This feature allows you to split your code into various bundles which can then b
 
 4. When using the library, 
     - `import { Sample } from 'react-gadgets';` -- import all components inside the library
-    - `import Sample from 'react-gadgets/esm/sample';` -- import only sample component
+    - `import Sample from 'react-gadgets/esm/sample';` -- import only sample component (direct import)
     
 ## 4. Configuration Issues that you might face
 
@@ -302,6 +328,27 @@ These are possible problems you might faced when trying to setup the configurati
     - Solution: add file extension to resolve
     - Reference: [Rollup Issue with importing jsx files](https://github.com/rollup/rollup/issues/1052)
 
+3. Jest fails to run when components imports css modules
+    - Details:
+        ````$xslt
+        C:\..\react-gadgets\src\components\Sample\Sample.scss:1
+        ({"Object.<anonymous>":function(module,exports,require,__dirname,__filename,global,jest){.test_component {
+                                                                                                     ^
+        
+        SyntaxError: Unexpected token '.'
+    
+          1 | import React, { useState } from 'react';
+          2 | import PropTypes from 'prop-types';
+        > 3 | import styles from './Sample.scss';
+            | ^
+          4 |
+    
+          at Runtime.createScriptFromCode (../node_modules/jest-runtime/build/index.js:1258:14)
+          at Object.<anonymous> (components/Sample/Sample.jsx:3:1)
+        ````
+    - Solution: Add `moduleNameMapper` in `jest.config.js`
+    - Reference: [Jest doesn't works with JSX which imports CSS](https://github.com/facebook/jest/issues/3094)
+
 ## 5. References
 
-The links can be found in the main [README.md](../README.md)
+The links can be found in the main [README.md](../README.md#references)
