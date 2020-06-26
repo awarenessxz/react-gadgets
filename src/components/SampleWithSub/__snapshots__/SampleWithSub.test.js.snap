@@ -2,7 +2,9 @@
 
 exports[`Testing if component renders properly Snapshot Testing 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="wrapper"
+  >
     <h1>
       Select User from List Below
     </h1>
@@ -22,29 +24,47 @@ exports[`Testing if component renders properly Snapshot Testing 1`] = `
     >
       Index = 0
     </h2>
-    <h3>
-      Child Component: 
-    </h3>
-    <button>
-      Add 1
-    </button>
-    <button>
-      Minus 1
-    </button>
-    <h3>
-      Child Component: 
-    </h3>
-    <button>
-      Add 3
-    </button>
-    <button>
-      Minus 3
-    </button>
+    <div
+      class="wrapper"
+    >
+      <h3>
+        Child Component: 
+      </h3>
+      <button>
+        Add 1
+      </button>
+      <button>
+        Minus 1
+      </button>
+    </div>
+    <div
+      class="wrapper"
+    >
+      <h3>
+        Child Component: 
+      </h3>
+      <button>
+        Add 3
+      </button>
+      <button>
+        Minus 3
+      </button>
+    </div>
     <hr />
-    <button>
-      Select Row based on index above
-    </button>
-    <ul>
+    <div>
+      <p
+        class="wrapper2"
+      >
+        Selected User: 
+        <strong>
+          Null
+        </strong>
+      </p>
+      <button>
+        Select Row based on index above
+      </button>
+    </div>
+    <ol>
       <li
         data-testid="usernames"
       >
@@ -75,10 +95,7 @@ exports[`Testing if component renders properly Snapshot Testing 1`] = `
       >
         Frank
       </li>
-    </ul>
-    <p>
-      Selected User: Null
-    </p>
+    </ol>
   </div>
 </DocumentFragment>
 `;

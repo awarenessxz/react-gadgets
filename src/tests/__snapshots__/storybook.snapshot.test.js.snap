@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Welcome|Sample Hello World 1`] = `
-<div>
+<div
+  className="test_component"
+>
   <h1
     data-testid="label_id"
   >
@@ -28,7 +30,9 @@ exports[`Storyshots Welcome|Sample Hello World 1`] = `
 `;
 
 exports[`Storyshots Welcome|Sample Second Way 1`] = `
-<div>
+<div
+  className="test_component"
+>
   <h1
     data-testid="label_id"
   >
@@ -55,7 +59,9 @@ exports[`Storyshots Welcome|Sample Second Way 1`] = `
 `;
 
 exports[`Storyshots Welcome|SampleV2 Sample With Sub Component 1`] = `
-<div>
+<div
+  className="wrapper"
+>
   <h1>
     Select User from List Below
   </h1>
@@ -76,43 +82,61 @@ exports[`Storyshots Welcome|SampleV2 Sample With Sub Component 1`] = `
     Index = 
     0
   </h2>
-  <h3>
-    Child Component: 
-  </h3>
-  <button
-    onClick={[Function]}
+  <div
+    className="wrapper"
   >
-    Add 
-    1
-  </button>
-  <button
-    onClick={[Function]}
+    <h3>
+      Child Component: 
+    </h3>
+    <button
+      onClick={[Function]}
+    >
+      Add 
+      1
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Minus 
+      1
+    </button>
+  </div>
+  <div
+    className="wrapper"
   >
-    Minus 
-    1
-  </button>
-  <h3>
-    Child Component: 
-  </h3>
-  <button
-    onClick={[Function]}
-  >
-    Add 
-    3
-  </button>
-  <button
-    onClick={[Function]}
-  >
-    Minus 
-    3
-  </button>
+    <h3>
+      Child Component: 
+    </h3>
+    <button
+      onClick={[Function]}
+    >
+      Add 
+      3
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Minus 
+      3
+    </button>
+  </div>
   <hr />
-  <button
-    onClick={[Function]}
-  >
-    Select Row based on index above
-  </button>
-  <ul>
+  <div>
+    <p
+      className="wrapper2"
+    >
+      Selected User: 
+      <strong>
+        Null
+      </strong>
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Select Row based on index above
+    </button>
+  </div>
+  <ol>
     <li
       data-testid="usernames"
     >
@@ -143,10 +167,6 @@ exports[`Storyshots Welcome|SampleV2 Sample With Sub Component 1`] = `
     >
       Frank
     </li>
-  </ul>
-  <p>
-    Selected User: 
-    Null
-  </p>
+  </ol>
 </div>
 `;
