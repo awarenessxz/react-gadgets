@@ -65,6 +65,7 @@
         "@rollup/plugin-commonjs": "^13.0.0",
         "@rollup/plugin-node-resolve": "^8.0.1",
         "@storybook/addon-actions": "^5.3.19",
+        "@storybook/addon-console": "^1.2.1",
         "@storybook/addon-docs": "^5.3.19",
         "@storybook/addon-links": "^5.3.19",
         "@storybook/addon-storyshots": "^5.3.19",

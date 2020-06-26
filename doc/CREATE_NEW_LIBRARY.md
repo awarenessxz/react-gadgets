@@ -106,7 +106,7 @@ Additional Features includes:
     - `npx -p @storybook/cli sb init --type react`
     - Make sure the packages `@babel/core` & `babel-loader` are installed
 2. Add Storybook-addons
-    - `yarn add --dev @storybook/addon-docs @storybook/addon-storysource`
+    - `yarn add --dev @storybook/addon-docs @storybook/addon-storysource @storybook/addon-console`
 3. Update `./storybook/main.js`
     ```$xslt
     module.exports = {
@@ -119,7 +119,14 @@ Additional Features includes:
        ],
     };
     ```
-4. Update `rollup.config.js`
+4. Add configuration for addon
+    ```$xslt
+    import { addDecorator } from '@storybook/react';
+    import { withConsole } from '@storybook/addon-console';
+    
+    addDecorator((storyFn, context) => withConsole()(storyFn)(context)); // allows console (log/warn/error) to appear in action tab
+    ```
+5. Update `rollup.config.js`
     ```$xslt
     plugins: [
         ...
