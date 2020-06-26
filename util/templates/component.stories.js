@@ -4,7 +4,7 @@ import React from 'react';
 import ${componentName} from './${componentName}';
 
 export default {
-    title: 'Component|${componentName}', // how to refer to the component in the sidebar of the Storybook app,
+    title: 'Components|${componentName}', // how to refer to the component in the sidebar of the Storybook app,
     component: ${componentName}, // the component itself
 }
       
@@ -19,6 +19,18 @@ export const Basic = () => {
 
 export const WithParams = () => {
     return <${componentName} title='Testing' />;
+};
+
+/************************************************
+ * Add Description to the stories (for documentation)
+ ************************************************/
+
+WithParams.story = {
+    parameters: {
+        docs: {
+            storyDescription: 'Story Description...',
+        },
+    },
 };
 `,
     extension: `.stories.js`,
