@@ -2,6 +2,17 @@
 
 ## Development
 
+### 0. TLDR
+
+- Create new component: `yarn run create-new-component <FileName>` -- should be **CamelCase**
+- Viewing component on storybook + documentation
+    - `yarn run storybook`
+- Testing: 
+    - `yarn run test:watch` (while developing) 
+    - `yarn run test` (include in CI/CD pipeline)
+- Building library:
+    - `yarn run build` -- your component must be exported in `src/index.js`
+
 ### 1. Important Notes!
 
 #### 1.1 File naming convention
@@ -106,6 +117,8 @@ Follow the steps below to add additional components to `react-gadgets`:
 2. `http://localhost:6006` -- open in internet browser to view storybook locally
 
 ### 3. Publishing to NPM
+
+`npm publish react-gadgets`
 
 ### 4. Testing the library locally
 

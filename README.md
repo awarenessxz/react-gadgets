@@ -91,8 +91,14 @@ Refer to the [documentation](./doc/README.md) for more details.
     - [Storybook DocsPage (automatically populated)](https://github.com/storybookjs/storybook/blob/master/addons/docs/docs/docspage.md)
     - [Storybook Docs MDX (writing custom documentation)](https://github.com/storybookjs/storybook/blob/master/addons/docs/docs/mdx.md)
 
+4. Components
+    - Transfer List
+        - [react-filtered-multiselect](https://github.com/insin/react-filtered-multiselect)
+        - [material ui - transfer list ](https://material-ui.com/components/transfer-list/)
+
 ## Credits
 
+- [Jonny Buchanan](https://github.com/insin/react-filtered-multiselect)
 - [Harvey Delaney](https://github.com/HarveyD/react-component-library)
 - [Jebus](https://medium.com/@jebus)
 
