@@ -119,12 +119,22 @@ Additional Features includes:
        ],
     };
     ```
-4. Add configuration for addon
+4. Add configuration for addon. In `.storybook/preview.js`
     ```$xslt
     import { addDecorator } from '@storybook/react';
     import { withConsole } from '@storybook/addon-console';
+    import { configureActions } from '@storybook/addon-actions';
     
-    addDecorator((storyFn, context) => withConsole()(storyFn)(context)); // allows console (log/warn/error) to appear in action tab
+    // allows console (log/warn/error) to appear in action tab
+    addDecorator((storyFn, context) => withConsole()(storyFn)(context));
+    
+    // configure addon-actions
+    configureActions({
+        depth: 100,
+        // Limit the number of items logged into the actions panel
+        limit: 20,
+        clearOnStoryChange: true,
+    });
     ```
 5. Update `rollup.config.js`
     ```$xslt
