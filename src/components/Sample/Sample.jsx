@@ -21,7 +21,7 @@ const Sample = props => {
     };
 
     return (
-        <div className={styles.test_component}>
+        <div className={styles.wrapper}>
             <h1 data-testid='label_id'>Hello {props.title}</h1>
             <p>Type something to enable the Submit button</p>
             <input
