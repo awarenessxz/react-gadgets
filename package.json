@@ -42,6 +42,7 @@
         "build": "yarn run build:clean && yarn run build:generate && rollup -c",
         "build:clean": "rm -rf dist",
         "build:generate": "node ./util/auto-generate-entry-points ./src/index.js",
+        "create-new-component": "node ./util/create-new-component",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "lint": "eslint .",
