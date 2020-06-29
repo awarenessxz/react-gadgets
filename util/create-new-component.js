@@ -10,7 +10,7 @@ if (!componentName) {
 
 // 2. create component
 console.info('\x1b[32m%s\x1b[0m', 'Creating component template with name', componentName, '...');
-const componentDirectory = `./src/${componentName}`;
+const componentDirectory = `./src/components/${componentName}`;
 
 if (fs.existsSync(componentDirectory)) {
     console.error('\x1b[31m%s\x1b[0m', `Component ${componentName} already exists`);
