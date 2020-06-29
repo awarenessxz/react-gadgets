@@ -329,6 +329,11 @@ This feature allows you to split your code into various bundles which can then b
 4. When using the library, 
     - `import { Sample } from 'react-gadgets';` -- import all components inside the library
     - `import Sample from 'react-gadgets/esm/sample';` -- import only sample component (direct import)
+
+### Create Component using Template Script [Optional]
+
+This script was designed by 
+
     
 ## 4. Configuration Issues that you might face
 
