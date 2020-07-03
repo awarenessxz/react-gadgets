@@ -9,7 +9,25 @@ Additional Features includes:
 - Storybook
 - Jest & React-Testing-Library
 
-## 1. Steps to create a React Library
+## 1. Packages / Plugins / Rules
+
+-   Rollup & Babel
+    -   **rollup-plugin-peer-deps-external** -- preventing Rollup from bundling the peer dependencies we've defined in package.json
+    -   **@rollup/plugin-node-resolve** -- efficiently bundles third party dependencies we've installed in node_modules
+    -   **@rollup/plugin-commonjs** -- enables transpilation into CommonJS (CJS) format
+    -   **@babel/plugin-proposal-class-properties** -- transforms static class properties as well as properties declared with the property initializer syntax
+    -   **@babel/plugin-syntax-dynamic-import** -- Allow parsing of import()
+    -   **@babel/plugin-proposal-object-rest-spread** -- Compile object rest and spread to ES5
+    -   **@babel/plugin-transform-arrow-functions** -- Compile ES2015 arrow functions to ES5
+    -   **@babel/plugin-transform-template-literals** -- Compile ES2015 template literals to ES5
+    -   **babel-plugin-transform-react-remove-prop-types** -- Remove unnecessary React propTypes from the production build.
+-   Storybook
+    -   **@storybook/addon-storyshots** -- for structural testing (aka snapshot testing)
+    -   **@storybook/addon-actions** -- for logging actions
+    -   **@storybook/addon-docs** -- for documenting component (automatically)
+
+
+## 2. Steps to create a React Library
 
 ### Initial Set up
 
@@ -17,6 +35,7 @@ Additional Features includes:
 2. Install Nodejs
 3. Create directory `react-gadgets`
 4. Inside react-gadgets folder, run `npm init -y` in the command line
+5. Add sample files to `src/components` (refer to repo) -- **Optional**
 
 ### Configuring Rollup
 
@@ -32,7 +51,7 @@ Additional Features includes:
         ...
         ```
 2. Install Babel related packages
-    - `yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread @babel/plugin-syntax-dynamic-import @babel/plugin-transform-arrow-functions @babel/plugin-transform-template-literals @babel/preset-env @babel/preset-react babel-plugin-transform-react-remove-prop-types`
+    - `yarn add --dev @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread @babel/plugin-syntax-dynamic-import @babel/plugin-transform-arrow-functions @babel/plugin-transform-template-literals @babel/preset-env @babel/preset-react`
 3. Install Rollup related packages
     - `yarn add --dev rollup @rollup/plugin-babel @rollup/plugin-commonjs @rollup/plugin-node-resolve rollup-plugin-peer-deps-external`
 4. Create a React Component inside `src` folder (eg. `src/components/Sample/Sample.jsx`)
@@ -105,9 +124,11 @@ Additional Features includes:
 1. Add Storybook
     - `npx -p @storybook/cli sb init --type react`
     - Make sure the packages `@babel/core` & `babel-loader` are installed
-2. Add Storybook-addons
-    - `yarn add --dev @storybook/addon-docs @storybook/addon-storysource @storybook/addon-console`
-3. Update `./storybook/main.js`
+2. Add Dependencies
+    - `yarn add --dev react-is`
+3. Add Storybook-addons
+    - `yarn add --dev @storybook/addon-docs @storybook/addon-storysource @storybook/addon-console @storybook/addon-centered`
+4. Update `./storybook/main.js`
     ```$xslt
     module.exports = {
        stories: ['../src/**/*.stories.(js|mdx)'],
@@ -119,15 +140,19 @@ Additional Features includes:
        ],
     };
     ```
-4. Add configuration for addon. In `.storybook/preview.js`
+5. Add configuration for addon. In `.storybook/preview.js`
     ```$xslt
     import { addDecorator } from '@storybook/react';
     import { withConsole } from '@storybook/addon-console';
     import { configureActions } from '@storybook/addon-actions';
+    import centered from '@storybook/addon-centered/react';
     
     // allows console (log/warn/error) to appear in action tab
     addDecorator((storyFn, context) => withConsole()(storyFn)(context));
     
+    // center the story
+    addDecorator(centered);
+   
     // configure addon-actions
     configureActions({
         depth: 100,
@@ -136,7 +161,7 @@ Additional Features includes:
         clearOnStoryChange: true,
     });
     ```
-5. Update `rollup.config.js`
+6. Update `rollup.config.js`
     ```$xslt
     plugins: [
         ...
@@ -148,9 +173,9 @@ Additional Features includes:
         ...
     ],
     ```
-5. To view the storybook locally
+7. To view the storybook locally
     - `yarn run storybook`
-6. For the rest of the configuration, refer to the project & [official documentations](https://www.learnstorybook.com/)
+8. For the rest of the configuration, refer to the project & [official documentations](https://www.learnstorybook.com/)
     - refer to the next part on css configuration for storybook
 
 ### Configuring CSS Style (SASS + CSS Modules)
@@ -262,23 +287,6 @@ Additional Features includes:
        ...
    ],
        ```
-
-## 2. Packages / Plugins / Rules
-
--   Rollup & Babel
-    -   **rollup-plugin-peer-deps-external** -- preventing Rollup from bundling the peer dependencies we've defined in package.json
-    -   **@rollup/plugin-node-resolve** -- efficiently bundles third party dependencies we've installed in node_modules
-    -   **@rollup/plugin-commonjs** -- enables transpilation into CommonJS (CJS) format
-    -   **@babel/plugin-proposal-class-properties** -- transforms static class properties as well as properties declared with the property initializer syntax
-    -   **@babel/plugin-syntax-dynamic-import** -- Allow parsing of import()
-    -   **@babel/plugin-proposal-object-rest-spread** -- Compile object rest and spread to ES5
-    -   **@babel/plugin-transform-arrow-functions** -- Compile ES2015 arrow functions to ES5
-    -   **@babel/plugin-transform-template-literals** -- Compile ES2015 template literals to ES5
-    -   **babel-plugin-transform-react-remove-prop-types** -- Remove unnecessary React propTypes from the production build.
--   Storybook
-    -   **@storybook/addon-storyshots** -- for structural testing (aka snapshot testing)
-    -   **@storybook/addon-actions** -- for logging actions
-    -   **@storybook/addon-docs** -- for documenting component (automatically)
 
 ## 3. Additional Configuration
 

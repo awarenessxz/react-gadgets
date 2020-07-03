@@ -39,7 +39,7 @@
     "scripts": {
         "test": "jest",
         "test:watch": "jest --watch",
-        "build": "yarn run build:clean && yarn run build:generate && rollup -c",
+        "build": "rollup -c",
         "build:clean": "rm -rf dist",
         "build:generate": "node ./util/auto-generate-entry-points ./src/index.js",
         "create-new-component": "node ./util/create-new-component",
@@ -80,7 +80,6 @@
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.0.1",
         "babel-loader": "^8.1.0",
-        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
         "eslint": "^7.3.1",
         "eslint-config-prettier": "^6.11.0",
         "eslint-config-standard": "^14.1.1",

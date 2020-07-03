@@ -130,7 +130,6 @@ Instead of publishing to NPM to test the library, you can follow these steps to 
     - build the library `yarn run build`
 3. Inside `example` project folder
     - run `yarn link react-gadgets` -- to link the library to example
-    - run `yarn add react-gadgets` -- to install the library
     - inside `app.js`, import the component (eg. `import { Sample } from 'react-gadgets';`) and add the component (`<Sample />`)
     - start the application `yarn start`
 4. You should receive the following error 

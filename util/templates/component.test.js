@@ -19,11 +19,13 @@ describe('Testing if component renders properly', () => {
     
      // Testing Dom Elements: check if renders with correct value (Note the usage of data-testid in component)
     describe('component renders with correct state (Testing Dom elements)', () => {
-        const title = 'Testing';
-        renderComponent({ title: title });
-        const label = 'New Component : ' + title;
- 
-        expect(screen.getByTestId('${componentName}')).toHaveTextContent(label);
+        it('testing title', () => {
+            const title = 'Testing';
+            renderComponent({ title: title });
+            const label = 'New Component : ' + title;
+     
+            expect(screen.getByTestId('${componentName}')).toHaveTextContent(label);
+        });
     });
 });
 `,
