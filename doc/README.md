@@ -85,7 +85,6 @@ Follow the steps below to add additional components to `react-gadgets`:
         -   _Note: the [render method](https://testing-library.com/docs/react-testing-library/api) returns several methods we can use to test our features._
 -   Types of Testing done:
     1. Structural Testing (via Storybook addon "StoryShots" which is an integration of Jest's Snapshot)
-        - Refer to `src/tests/storybook.snapshot.test.js` for the implementation of structural testing for stories
         - Refer to `src/components/0-Sample/Sample.test.js` for the implementation of snapshot testing for components
         - Snapshot Testing is done automatically when running `yarn run test`
     2. Behaviour Driven Testing

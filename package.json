@@ -7,7 +7,8 @@
     "source": {
         "index": "./src/index.js",
         "Sample": "./src/components/Sample/Sample",
-        "SampleWithSub": "./src/components/SampleWithSub/SampleWithSub"
+        "SampleWithSub": "./src/components/SampleWithSub/SampleWithSub",
+        "AgGridWrapper": "./src/components/AGGridWrapper/AgGridWrapper"
     },
     "target": {
         "cjs": "dist/cjs",
@@ -39,7 +40,7 @@
     "scripts": {
         "test": "jest",
         "test:watch": "jest --watch",
-        "build": "rollup -c",
+        "build": "yarn run build:clean && yarn run build:generate && rollup -c",
         "build:clean": "rm -rf dist",
         "build:generate": "node ./util/auto-generate-entry-points ./src/index.js",
         "create-new-component": "node ./util/create-new-component",
@@ -64,8 +65,8 @@
         "@rollup/plugin-babel": "^5.0.3",
         "@rollup/plugin-commonjs": "^13.0.0",
         "@rollup/plugin-node-resolve": "^8.0.1",
+        "@rollup/pluginutils": "^3.1.0",
         "@storybook/addon-actions": "^5.3.19",
-        "@storybook/addon-centered": "^5.3.19",
         "@storybook/addon-console": "^1.2.1",
         "@storybook/addon-docs": "^5.3.19",
         "@storybook/addon-links": "^5.3.19",
@@ -77,9 +78,13 @@
         "@testing-library/react": "^10.3.0",
         "@types/jest": "^26.0.0",
         "@types/react": "^16.9.38",
+        "ag-grid-community": "^23.2.1",
+        "ag-grid-enterprise": "^23.2.1",
+        "ag-grid-react": "^23.2.1",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.0.1",
         "babel-loader": "^8.1.0",
+        "bootstrap": "^4.5.0",
         "eslint": "^7.3.1",
         "eslint-config-prettier": "^6.11.0",
         "eslint-config-standard": "^14.1.1",
@@ -99,6 +104,7 @@
         "prettier": "^2.0.5",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
+        "react-bootstrap": "^1.0.1",
         "react-dom": "^16.13.1",
         "react-is": "^16.13.1",
         "react-test-renderer": "^16.13.1",

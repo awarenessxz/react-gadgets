@@ -5,6 +5,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import packageJson from './package.json';
+import path from 'path';
 
 export default {
     input: packageJson.source,
@@ -25,7 +26,14 @@ export default {
         postcss({
             modules: true,
             extensions: ['css', 'scss'],
-            use: ['sass'],
+            use: [
+                [
+                    'sass',
+                    {
+                        includePaths: [path.resolve('node_modules')],
+                    },
+                ],
+            ],
         }),
         babel({
             include: ['src/**/*'],
