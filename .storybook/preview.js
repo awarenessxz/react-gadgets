@@ -1,7 +1,7 @@
 import { addDecorator } from '@storybook/react';
 import { withConsole } from '@storybook/addon-console';
 import { configureActions } from '@storybook/addon-actions';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'ag-grid-community/dist/styles/ag-grid.min.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.min.css';
 
