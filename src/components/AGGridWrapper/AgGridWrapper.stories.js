@@ -64,13 +64,115 @@ export const Basic = () => {
 };
 
 export const EnableSelection = () => {
-    const enableSelection = {
-        onSelectButtonClick: action('Select Button Clicked!'),
+    const columnDefs = [
+        {
+            headerName: 'Make',
+            field: 'make',
+        },
+        {
+            headerName: 'Model',
+            field: 'model',
+        },
+        {
+            headerName: 'Price',
+            field: 'price',
+        },
+    ];
+    const rowData = [
+        {
+            make: 'Toyota',
+            model: 'Celica',
+            price: 35000,
+        },
+        {
+            make: 'Ford',
+            model: 'Mondeo',
+            price: 32000,
+        },
+        {
+            make: 'Porsche',
+            model: 'Boxter',
+            price: 72000,
+        },
+    ];
+    const enableRowSelection = {
+        onSelectionChange: action('Select Button Clicked!'),
         multiRowSelection: true,
         showCheckbox: true,
-        showClearAllSelectionButton: true,
     };
-    return <AgGridWrapper {...sampleData} enableSelection={enableSelection} />;
+    return (
+        <AgGridWrapper
+            columnDefs={columnDefs}
+            rowData={rowData}
+            enableRowSelection={enableRowSelection}
+        />
+    );
+};
+
+export const EnableRowDragging = () => {
+    return <AgGridWrapper {...sampleData} enableRowReorder />;
+};
+
+export const EnableCellEdits = () => {
+    return <AgGridWrapper {...sampleData} enableCellEdits />;
+};
+
+export const EnableRowGrouping = () => {
+    const columnDefs = [
+        {
+            headerName: 'Make',
+            field: 'make',
+            enableRowGroup: true,
+        },
+        {
+            headerName: 'Model',
+            field: 'model',
+            enableRowGroup: true,
+        },
+        {
+            headerName: 'Price',
+            field: 'price',
+        },
+    ];
+    const rowData = [
+        {
+            make: 'Toyota',
+            model: 'Celica',
+            price: 35000,
+        },
+        {
+            make: 'Ford',
+            model: 'Mondeo',
+            price: 16000,
+        },
+        {
+            make: 'Porsche',
+            model: 'Boxter',
+            price: 72000,
+        },
+        {
+            make: 'Toyota',
+            model: 'Celica',
+            price: 1111111,
+        },
+        {
+            make: 'Ford',
+            model: 'Mondeo',
+            price: 3333333,
+        },
+        {
+            make: 'Porsche',
+            model: 'Boxter',
+            price: 2222222,
+        },
+    ];
+    return (
+        <AgGridWrapper height='400px' columnDefs={columnDefs} rowData={rowData} enableRowGrouping />
+    );
+};
+
+export const Charts = () => {
+    return <AgGridWrapper {...sampleData} enableCharts />;
 };
 
 export const OtherProps = () => {
@@ -78,17 +180,14 @@ export const OtherProps = () => {
         {
             headerName: 'Make',
             field: 'make',
-            editable: true,
         },
         {
             headerName: 'Model',
             field: 'model',
-            editable: true,
         },
         {
             headerName: 'Price',
             field: 'price',
-            editable: true,
         },
     ];
     const rowData = [
@@ -114,38 +213,13 @@ export const OtherProps = () => {
                 <div className='col-sm'>
                     <h3>Other Cool Ag-Grid Features: </h3>
                     <ol>
-                        <li>
-                            Add <b>enableRangeSelection</b> to <u>gridProps</u> to allow user to
-                            click and select multiple rows & columns. Useful for copying
-                        </li>
-                        <li>
-                            Add <b>rowDragManaged</b> to <u>gridProps</u> to allow user to re-order
-                            columns
-                        </li>
-                        <li>
-                            Add <b>editable</b> property in the <u>columnDefs</u> to enable user to
-                            edit values in cells.
-                            <ul>
-                                <li>
-                                    Adding <b>singleClickEdit</b> to <u>gridProps</u> allows cell to
-                                    enter edit mode as soon as it is clicked
-                                </li>
-                            </ul>
-                        </li>
+                        <li />
                     </ol>
                 </div>
             </div>
             <div className='row'>
                 <div className='col-sm'>
-                    <AgGridWrapper
-                        columnDefs={columnDefs}
-                        rowData={rowData}
-                        gridProps={{
-                            enableRangeSelection: true,
-                            rowDragManaged: true,
-                            singleClickEdit: true,
-                        }}
-                    />
+                    <AgGridWrapper columnDefs={columnDefs} rowData={rowData} gridProps={{}} />
                 </div>
             </div>
         </div>

@@ -15,11 +15,6 @@
   transition: opacity .15s linear;
 }
 
-.row_buffer {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 .toolbar {
   overflow: hidden;
   width: auto;
@@ -29,4 +24,9 @@
 .toolbar > button {
   float: left;
   margin-left: 10px;
+}
+
+.chartFormControl {
+  minWidth: '120px';
+  maxWidth: '300px';
 }
