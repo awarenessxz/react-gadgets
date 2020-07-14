@@ -100,13 +100,12 @@ const AgGridWrapper = props => {
 
     // handle charts
     const handleCreateChart = params => {
-        console.log(params);
         gridApi.current.createRangeChart(params);
     };
 
     const renderToolbar = () => {
         return (
-            <Toolbar style={{ background: props.toolbarColor }}>
+            <Toolbar data-testid='toolbar' style={{ background: props.toolbarColor }}>
                 <div style={{ flexGrow: 1 }} />
                 <div>
                     {props.enableCellEdits && (
@@ -142,6 +141,13 @@ const AgGridWrapper = props => {
                             dropdownContent={
                                 <CreateChartDropdown
                                     defaultColumnNames={props.columnDefs.map(colDef => {
+                                        if (colDef.headerName) {
+                                            return colDef.headerName;
+                                        } else {
+                                            return colDef.field;
+                                        }
+                                    })}
+                                    defaultColumnFields={props.columnDefs.map(colDef => {
                                         return colDef.field;
                                     })}
                                     onClick={() => {}} // onClick is defined via ToolButton's onClick
@@ -210,7 +216,7 @@ AgGridWrapper.defaultProps = {
     enableCellEdits: false,
     toolbar: 'top',
     toolbarColor: '#EDEDED',
-    height: '250px',
+    height: '400px',
     width: '100%',
     animateRows: true,
     enableRangeSelection: true,
@@ -231,6 +237,7 @@ AgGridWrapper.defaultProps = {
         filter: false,
         editable: false,
         resizable: true,
+        sortable: true,
     },
     gridProps: {},
 };
@@ -249,10 +256,10 @@ AgGridWrapper.propTypes = {
     /** Columns Definition (Refer to ag-grid documentation) */
     columnDefs: PropTypes.arrayOf(
         PropTypes.shape({
-            /** Column Header */
-            headerName: PropTypes.string.isRequired,
             /** Column field */
             field: PropTypes.string.isRequired,
+            /** Column Header */
+            headerName: PropTypes.string,
             /** Enable Sorting for column */
             sortable: PropTypes.bool,
             /** Enable Filtering for column */

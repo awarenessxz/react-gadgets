@@ -50,6 +50,40 @@ const sampleData = {
     ],
 };
 
+const createRowData = () => {
+    const countries = [
+        'Ireland',
+        'Spain',
+        'United Kingdom',
+        'France',
+        'Germany',
+        'Luxembourg',
+        'Sweden',
+        'Norway',
+        'Italy',
+        'Greece',
+        'Iceland',
+        'Portugal',
+        'Malta',
+        'Brazil',
+        'Argentina',
+        'Colombia',
+        'Peru',
+        'Venezuela',
+        'Uruguay',
+        'Belgium',
+    ];
+
+    return countries.map(function (country, index) {
+        return {
+            country: country,
+            gold: Math.floor(((index + 1 / 7) * 333) % 100),
+            silver: Math.floor(((index + 1 / 3) * 555) % 100),
+            bronze: Math.floor(((index + 1 / 7.3) * 777) % 100),
+        };
+    });
+};
+
 /************************************************
  * Stories (different permutation of the component)
  ************************************************/
@@ -167,61 +201,25 @@ export const EnableRowGrouping = () => {
         },
     ];
     return (
-        <AgGridWrapper height='400px' columnDefs={columnDefs} rowData={rowData} enableRowGrouping />
+        <div>
+            <h1>Incomplete</h1>
+            <AgGridWrapper
+                height='400px'
+                columnDefs={columnDefs}
+                rowData={rowData}
+                enableRowGrouping
+            />
+        </div>
     );
 };
 
 export const Charts = () => {
-    return <AgGridWrapper {...sampleData} enableCharts />;
-};
-
-export const OtherProps = () => {
-    const columnDefs = [
-        {
-            headerName: 'Make',
-            field: 'make',
-        },
-        {
-            headerName: 'Model',
-            field: 'model',
-        },
-        {
-            headerName: 'Price',
-            field: 'price',
-        },
+    var columnDefs = [
+        { field: 'country', width: 150, chartDataType: 'category' },
+        { field: 'gold', chartDataType: 'series', sort: 'desc' },
+        { field: 'silver', chartDataType: 'series', sort: 'desc' },
+        { field: 'bronze', chartDataType: 'series' },
     ];
-    const rowData = [
-        {
-            make: 'Toyota',
-            model: 'Celica',
-            price: 35000,
-        },
-        {
-            make: 'Ford',
-            model: 'Mondeo',
-            price: 32000,
-        },
-        {
-            make: 'Porsche',
-            model: 'Boxter',
-            price: 72000,
-        },
-    ];
-    return (
-        <div className='container' style={{ padding: '20px' }}>
-            <div className='row'>
-                <div className='col-sm'>
-                    <h3>Other Cool Ag-Grid Features: </h3>
-                    <ol>
-                        <li />
-                    </ol>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col-sm'>
-                    <AgGridWrapper columnDefs={columnDefs} rowData={rowData} gridProps={{}} />
-                </div>
-            </div>
-        </div>
-    );
+    const rowData = createRowData();
+    return <AgGridWrapper columnDefs={columnDefs} rowData={rowData} enableCharts />;
 };
