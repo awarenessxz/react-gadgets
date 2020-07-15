@@ -151,6 +151,26 @@ export const EnableCellEdits = () => {
     return <AgGridWrapper {...sampleData} enableCellEdits />;
 };
 
+export const NullTable = () => {
+    const columnDefs = [
+        {
+            headerName: 'Make',
+            field: 'make',
+            enableRowGroup: true,
+        },
+        {
+            headerName: 'Model',
+            field: 'model',
+            enableRowGroup: true,
+        },
+        {
+            headerName: 'Price',
+            field: 'price',
+        },
+    ];
+    return <AgGridWrapper columnDefs={columnDefs} rowData={[]} />;
+};
+
 export const EnableRowGrouping = () => {
     const columnDefs = [
         {

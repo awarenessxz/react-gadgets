@@ -65,6 +65,7 @@ const ToolButton = props => {
             <Tooltip title={props.tooltipMsg}>
                 <span>
                     <IconButton
+                        id={props.buttonId}
                         aria-label={props.tooltipMsg}
                         onClick={props.onClick}
                         disabled={props.disable}>
@@ -82,6 +83,7 @@ const ToolButton = props => {
             <Fragment>
                 <Tooltip title={props.tooltipMsg}>
                     <IconButton
+                        id={props.buttonId}
                         ref={anchorRef}
                         aria-controls={open ? 'menu-list-grow' : undefined}
                         aria-haspopup='true'
@@ -125,6 +127,7 @@ const ToolButton = props => {
             <Fragment>
                 <Tooltip title={props.tooltipMsg}>
                     <IconButton
+                        id={props.buttonId}
                         ref={anchorRef}
                         aria-describedby={id}
                         aria-haspopup='true'
@@ -151,6 +154,7 @@ const ToolButton = props => {
         return (
             <Tooltip title={props.tooltipMsg}>
                 <IconButton
+                    id={props.buttonId}
                     aria-label={props.tooltipMsg}
                     onClick={props.onClick}
                     disabled={props.disable}>
@@ -186,6 +190,8 @@ ToolButton.defaultProps = {
 ToolButton.propTypes = {
     /** tool tip message if there is any */
     tooltipMsg: PropTypes.string.isRequired,
+    /** button id */
+    buttonId: PropTypes.string.isRequired,
     /** icon */
     icon: PropTypes.object.isRequired,
     /** callback */

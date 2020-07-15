@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,40 +13,49 @@ import ToolButton from './components/ToolButton';
 import CreateChartDropdown from './components/CreateChartDropdown';
 import styles from './AgGridWrapper.scss';
 
-const AgGridWrapper = props => {
-    const gridApi = useRef();
-    const columnApi = useRef();
-    const [numOfSelectedRows, setNumOfSelectedRows] = useState(0);
-    const [isWrapperReady, setIsWrapperReady] = useState(false);
-    const [error, setError] = useState('');
-    const downloadMenuItems = ['CSV Export', 'Excel Export'];
+/*
+ * AgGrid Wrapper
+ */
+class AgGridWrapper extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            numOfSelectedRows: 0,
+            isWrapperReady: false,
+            error: '',
+            downloadMenuItems: ['CSV Export', 'Excel Export'],
+        };
+    }
 
-    // on first load
-    useEffect(() => {
+    componentDidMount() {
         // user enable selection feature
-        if (props.enableRowSelection) {
-            props.columnDefs[0].checkboxSelection = props.enableRowSelection.showCheckbox;
+        if (this.props.enableRowSelection) {
+            this.props.columnDefs[0].checkboxSelection = this.props.enableRowSelection.showCheckbox;
         }
-        props.defaultColDef.editable = props.enableCellEdits;
-        props.columnDefs[0].rowDrag = props.enableRowReorder;
-        setIsWrapperReady(true);
-    }, []);
+        this.props.defaultColDef.editable = this.props.enableCellEdits;
+        this.props.columnDefs[0].rowDrag = this.props.enableRowReorder;
+        this.setState({
+            isWrapperReady: true,
+        });
+    }
 
     // set Ag-grid property for row selection if its enabled
-    const getRowSelectionProps = () => {
-        if (props.enableRowSelection) {
+    getRowSelectionProps = () => {
+        if (this.props.enableRowSelection) {
             return {
-                rowSelection: props.enableRowSelection.multiRowSelection ? 'multiple' : 'single',
+                rowSelection: this.props.enableRowSelection.multiRowSelection
+                    ? 'multiple'
+                    : 'single',
                 rowMultiSelectWithClick: true,
-                onSelectionChanged: e => handleSelectedChange(e),
+                onSelectionChanged: e => this.handleSelectedChange(e),
             };
         }
         return null;
     };
 
     // set Ag-grid property for cell editing if its enabled
-    const getCellEditsProps = () => {
-        if (props.enableCellEdits) {
+    getCellEditsProps = () => {
+        if (this.props.enableCellEdits) {
             return {
                 singleClickEdit: true,
                 undoRedoCellEditing: true,
@@ -59,8 +68,8 @@ const AgGridWrapper = props => {
     };
 
     // set Ag-grid properties for row grouping if its enabled
-    const getRowGroupingProps = () => {
-        if (props.enableRowGrouping) {
+    getRowGroupingProps = () => {
+        if (this.props.enableRowGrouping) {
             return {
                 groupMultiAutoColumn: true,
                 rowGroupPanelShow: 'always',
@@ -70,28 +79,30 @@ const AgGridWrapper = props => {
     };
 
     // returns selected row's data to parent component (if selection is enabled)
-    const handleSelectedChange = e => {
-        const selectedNodes = gridApi.current.getSelectedNodes();
+    handleSelectedChange = e => {
+        const selectedNodes = this.gridApi.getSelectedNodes();
         const selectedData = selectedNodes.map(node => node.data);
-        setNumOfSelectedRows(selectedData.length);
-        props.enableRowSelection.onSelectionChange(selectedData);
+        this.setState({
+            numOfSelectedRows: selectedData.length,
+        });
+        this.props.enableRowSelection.onSelectionChange(selectedData);
     };
 
     // clears all row selection
-    const handleClearAllSelectionRows = e => {
-        gridApi.current.deselectAll();
+    handleClearAllSelectionRows = e => {
+        this.gridApi.deselectAll();
     };
 
     // handle downloads
-    const handleDownload = menuItem => {
+    handleDownload = menuItem => {
         switch (menuItem) {
-            case downloadMenuItems[0]:
+            case this.state.downloadMenuItems[0]:
                 // export as csv
-                gridApi.current.exportDataAsCsv();
+                this.gridApi.exportDataAsCsv();
                 break;
-            case downloadMenuItems[1]:
+            case this.state.downloadMenuItems[1]:
                 // export as excel
-                gridApi.current.exportDataAsExcel();
+                this.gridApi.exportDataAsExcel();
                 break;
             default:
                 break;
@@ -99,55 +110,59 @@ const AgGridWrapper = props => {
     };
 
     // handle charts
-    const handleCreateChart = params => {
-        gridApi.current.createRangeChart(params);
+    handleCreateChart = params => {
+        this.gridApi.createRangeChart(params);
     };
 
-    const renderToolbar = () => {
+    renderToolbar = () => {
         return (
-            <Toolbar data-testid='toolbar' style={{ background: props.toolbarColor }}>
+            <Toolbar data-testid='toolbar' style={{ background: this.props.toolbarColor }}>
                 <div style={{ flexGrow: 1 }} />
                 <div>
-                    {props.enableCellEdits && (
+                    {this.props.enableCellEdits && (
                         <Fragment>
                             <ToolButton
-                                onClick={() => gridApi.current.undoCellEditing()}
+                                buttonId='undoCellEdits'
+                                onClick={() => this.gridApi.undoCellEditing()}
                                 icon={Undo}
                                 tooltipMsg='Undo Edits (Ctrl + Z)'
                             />
                             <ToolButton
-                                onClick={() => gridApi.current.redoCellEditing()}
+                                buttonId='redoCellEdits'
+                                onClick={() => this.gridApi.redoCellEditing()}
                                 icon={Redo}
                                 tooltipMsg='Redo Edits (Ctrl + Y)'
                             />
                         </Fragment>
                     )}
-                    {props.enableRowSelection && (
+                    {this.props.enableRowSelection && (
                         <ToolButton
+                            buttonId='clearRowSelection'
                             icon={IndeterminateCheckBoxIcon}
                             tooltipMsg='Clear Row Selection'
-                            onClick={handleClearAllSelectionRows}
-                            badgeCount={numOfSelectedRows}
+                            onClick={this.handleClearAllSelectionRows}
+                            badgeCount={this.state.numOfSelectedRows}
                             buttonType='badge'
-                            disable={numOfSelectedRows <= 0}
+                            disable={this.state.numOfSelectedRows <= 0}
                         />
                     )}
-                    {props.enableCharts && (
+                    {this.props.enableCharts && (
                         <ToolButton
-                            onClick={handleCreateChart}
+                            buttonId='CreateCharts'
+                            onClick={this.handleCreateChart}
                             icon={InsertChart}
                             tooltipMsg='Create Charts'
                             buttonType='dropdown'
                             dropdownContent={
                                 <CreateChartDropdown
-                                    defaultColumnNames={props.columnDefs.map(colDef => {
+                                    defaultColumnNames={this.props.columnDefs.map(colDef => {
                                         if (colDef.headerName) {
                                             return colDef.headerName;
                                         } else {
                                             return colDef.field;
                                         }
                                     })}
-                                    defaultColumnFields={props.columnDefs.map(colDef => {
+                                    defaultColumnFields={this.props.columnDefs.map(colDef => {
                                         return colDef.field;
                                     })}
                                     onClick={() => {}} // onClick is defined via ToolButton's onClick
@@ -156,58 +171,61 @@ const AgGridWrapper = props => {
                         />
                     )}
                     <ToolButton
+                        buttonId='downloadData'
                         icon={GetApp}
                         tooltipMsg='Download'
-                        onClick={handleDownload}
+                        onClick={this.handleDownload}
                         buttonType='menu'
-                        menuItems={downloadMenuItems}
+                        menuItems={this.state.downloadMenuItems}
                     />
                 </div>
             </Toolbar>
         );
     };
 
-    return (
-        <div data-testid='AgGridWrapper'>
-            <Container>
-                {error.trim() === '' ? (
-                    isWrapperReady && (
-                        <Fragment>
-                            {props.toolbar === 'top' && renderToolbar()}
-                            <div
-                                className='ag-theme-alpine'
-                                style={{ height: props.height, width: props.width }}>
-                                <AgGridReact
-                                    onGridReady={params => {
-                                        gridApi.current = params.api;
-                                        columnApi.current = params.columnApi;
-                                    }}
-                                    defaultColDef={props.defaultColDef}
-                                    columnDefs={props.columnDefs}
-                                    rowData={props.rowData}
-                                    animateRows={props.animateRows}
-                                    enableRangeSelection={props.enableRangeSelection}
-                                    statusBar={props.statusBar}
-                                    rowDragManaged={props.enableRowReorder}
-                                    enableCharts={props.enableCharts}
-                                    {...getCellEditsProps()}
-                                    {...getRowSelectionProps()}
-                                    {...getRowGroupingProps()}
-                                    {...props.gridProps}
-                                />
-                            </div>
-                            {props.toolbar === 'bottom' && renderToolbar()}
-                        </Fragment>
-                    )
-                ) : (
-                    <div data-testId='errorMsg' className={styles.error}>
-                        {error}
-                    </div>
-                )}
-            </Container>
-        </div>
-    );
-};
+    render() {
+        return (
+            <div data-testid='AgGridWrapper'>
+                <Container>
+                    {this.state.error.trim() === '' ? (
+                        this.state.isWrapperReady && (
+                            <Fragment>
+                                {this.props.toolbar === 'top' && this.renderToolbar()}
+                                <div
+                                    className='ag-theme-alpine'
+                                    style={{ height: this.props.height, width: this.props.width }}>
+                                    <AgGridReact
+                                        onGridReady={params => {
+                                            this.gridApi = params.api;
+                                            this.columnApi = params.columnApi;
+                                        }}
+                                        defaultColDef={this.props.defaultColDef}
+                                        columnDefs={this.props.columnDefs}
+                                        rowData={this.props.rowData}
+                                        animateRows={this.props.animateRows}
+                                        enableRangeSelection={this.props.enableRangeSelection}
+                                        statusBar={this.props.statusBar}
+                                        rowDragManaged={this.props.enableRowReorder}
+                                        enableCharts={this.props.enableCharts}
+                                        {...this.getCellEditsProps()}
+                                        {...this.getRowSelectionProps()}
+                                        {...this.getRowGroupingProps()}
+                                        {...this.props.gridProps}
+                                    />
+                                </div>
+                                {this.props.toolbar === 'bottom' && this.renderToolbar()}
+                            </Fragment>
+                        )
+                    ) : (
+                        <div data-testId='errorMsg' className={styles.error}>
+                            {this.state.error}
+                        </div>
+                    )}
+                </Container>
+            </div>
+        );
+    }
+}
 
 AgGridWrapper.defaultProps = {
     enableRowSelection: undefined,
@@ -279,7 +297,7 @@ AgGridWrapper.propTypes = {
         })
     ).isRequired,
     /** Row Data [Note: fields in object MUST MATCH fields defined in columnDefs] */
-    rowData: PropTypes.arrayOf(PropTypes.object).isRequired,
+    rowData: PropTypes.arrayOf(PropTypes.object),
     /** Enable Row Selection (Toolbar required for clear All Selection Button) */
     enableRowSelection: PropTypes.shape({
         /** listener for parent component to get selected row's data */

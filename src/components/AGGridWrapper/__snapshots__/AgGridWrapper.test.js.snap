@@ -20,6 +20,7 @@ exports[`Testing if component renders properly Snapshot Testing 1`] = `
           <button
             aria-haspopup="true"
             class="MuiButtonBase-root MuiIconButton-root"
+            id="downloadData"
             tabindex="0"
             title="Download"
             type="button"

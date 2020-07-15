@@ -3,7 +3,7 @@
 exports[`Testing if component renders properly Snapshot Testing 1`] = `
 <DocumentFragment>
   <div
-    class="test_component"
+    class="wrapper"
   >
     <h1
       data-testid="label_id"
