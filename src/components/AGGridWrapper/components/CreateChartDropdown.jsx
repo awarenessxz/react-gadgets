@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -15,15 +15,15 @@ import TextField from '@material-ui/core/TextField';
 import Styles from '../AgGridWrapper.scss';
 
 const CreateChartDropdown = props => {
-    const [title, setTitle] = React.useState('');
-    const [startRowIndex, setStartRowIndex] = React.useState(1);
-    const [endRowIndex, setEndRowIndex] = React.useState(3);
-    const [columnNames, setColumnNames] = React.useState(props.defaultColumnNames);
-    const [isAllCellRange, setIsAllCellRange] = React.useState(true);
-    const [showLegend, setShowLegend] = React.useState(true);
-    const [legendPlacement, setLegendPlacement] = React.useState('right');
-    const [chartType, setChartType] = React.useState('groupedColumn');
-    const [chartPalette, setChartPalette] = React.useState('bright');
+    const [title, setTitle] = useState('');
+    const [startRowIndex, setStartRowIndex] = useState(1);
+    const [endRowIndex, setEndRowIndex] = useState(3);
+    const [columnNames, setColumnNames] = useState(props.defaultColumnNames);
+    const [isAllCellRange, setIsAllCellRange] = useState(true);
+    const [showLegend, setShowLegend] = useState(true);
+    const [legendPlacement, setLegendPlacement] = useState('right');
+    const [chartType, setChartType] = useState('groupedColumn');
+    const [chartPalette, setChartPalette] = useState('bright');
     const chartTypes = [
         'groupedColumn',
         'stackedColumn',

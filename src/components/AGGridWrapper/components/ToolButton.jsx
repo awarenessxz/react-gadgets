@@ -54,7 +54,7 @@ const ToolButton = props => {
         const Icon = props.icon;
         if (props.disabledIcon) {
             const DisabledIcon = props.disabledIcon;
-            return props.disable ? <DisabledIcon /> : <Icon />;
+            return props.disabled ? <DisabledIcon /> : <Icon />;
         } else {
             return <Icon />;
         }
@@ -65,10 +65,9 @@ const ToolButton = props => {
             <Tooltip title={props.tooltipMsg}>
                 <span>
                     <IconButton
-                        id={props.buttonId}
                         aria-label={props.tooltipMsg}
                         onClick={props.onClick}
-                        disabled={props.disable}>
+                        disabled={props.disabled}>
                         <Badge badgeContent={props.badgeCount} color='primary'>
                             {renderIcon()}
                         </Badge>
@@ -82,14 +81,17 @@ const ToolButton = props => {
         return (
             <Fragment>
                 <Tooltip title={props.tooltipMsg}>
-                    <IconButton
-                        id={props.buttonId}
-                        ref={anchorRef}
-                        aria-controls={open ? 'menu-list-grow' : undefined}
-                        aria-haspopup='true'
-                        onClick={handleDropdownToggle}>
-                        {renderIcon()}
-                    </IconButton>
+                    <span>
+                        <IconButton
+                            ref={anchorRef}
+                            aria-label={props.tooltipMsg}
+                            aria-controls={open ? 'menu-list-grow' : undefined}
+                            aria-haspopup='true'
+                            onClick={handleDropdownToggle}
+                            disabled={props.disabled}>
+                            {renderIcon()}
+                        </IconButton>
+                    </span>
                 </Tooltip>
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition>
                     {({ TransitionProps, placement }) => (
@@ -126,25 +128,24 @@ const ToolButton = props => {
         return (
             <Fragment>
                 <Tooltip title={props.tooltipMsg}>
-                    <IconButton
-                        id={props.buttonId}
-                        ref={anchorRef}
-                        aria-describedby={id}
-                        aria-haspopup='true'
-                        onClick={handleDropdownToggle}>
-                        {renderIcon()}
-                    </IconButton>
+                    <span>
+                        <IconButton
+                            ref={anchorRef}
+                            aria-label={props.tooltipMsg}
+                            aria-describedby={id}
+                            aria-haspopup='true'
+                            onClick={handleDropdownToggle}
+                            disabled={props.disabled}>
+                            {renderIcon()}
+                        </IconButton>
+                    </span>
                 </Tooltip>
                 <Popper id={id} open={open} anchorEl={anchorRef.current} transition>
-                    {({ TransitionProps }) => (
-                        <Fade {...TransitionProps} timeout={350}>
-                            <Paper elevation={3} style={{ padding: '20px', border: '1px solid' }}>
-                                {React.cloneElement(props.dropdownContent, {
-                                    onClick: handleOnClickEventFromDropDownContent,
-                                })}
-                            </Paper>
-                        </Fade>
-                    )}
+                    <Paper elevation={3} style={{ padding: '20px', border: '1px solid' }}>
+                        {React.cloneElement(props.dropdownContent, {
+                            onClick: handleOnClickEventFromDropDownContent,
+                        })}
+                    </Paper>
                 </Popper>
             </Fragment>
         );
@@ -153,13 +154,14 @@ const ToolButton = props => {
     const renderNormalButton = () => {
         return (
             <Tooltip title={props.tooltipMsg}>
-                <IconButton
-                    id={props.buttonId}
-                    aria-label={props.tooltipMsg}
-                    onClick={props.onClick}
-                    disabled={props.disable}>
-                    {renderIcon()}
-                </IconButton>
+                <span>
+                    <IconButton
+                        aria-label={props.tooltipMsg}
+                        onClick={props.onClick}
+                        disabled={props.disabled}>
+                        {renderIcon()}
+                    </IconButton>
+                </span>
             </Tooltip>
         );
     };
@@ -183,21 +185,19 @@ const ToolButton = props => {
 
 ToolButton.defaultProps = {
     buttonType: 'normal',
-    disable: false,
+    disabled: false,
     dropdownContent: <span>Empty</span>,
 };
 
 ToolButton.propTypes = {
     /** tool tip message if there is any */
     tooltipMsg: PropTypes.string.isRequired,
-    /** button id */
-    buttonId: PropTypes.string.isRequired,
     /** icon */
     icon: PropTypes.object.isRequired,
     /** callback */
     onClick: PropTypes.func.isRequired,
     /** disable button */
-    disable: PropTypes.bool,
+    disabled: PropTypes.bool,
     /** disabled icon */
     disabledIcon: PropTypes.object,
     /** Button Type */

@@ -132,6 +132,7 @@ describe('Testing Events', () => {
     describe('Testing row de-selection when selection is enabled', () => {});
 });
 
+/*
 // 3. Testing Ag-Grid Related (probably not required)
 describe('Testing Ag-Grid Related', () => {
     let component = null;
@@ -161,3 +162,4 @@ describe('Testing Ag-Grid Related', () => {
         expect(agGridReact.api.getSelectedRows()).toHaveLength(0);
     });
 });
+ */

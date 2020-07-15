@@ -122,13 +122,11 @@ class AgGridWrapper extends Component {
                     {this.props.enableCellEdits && (
                         <Fragment>
                             <ToolButton
-                                buttonId='undoCellEdits'
                                 onClick={() => this.gridApi.undoCellEditing()}
                                 icon={Undo}
                                 tooltipMsg='Undo Edits (Ctrl + Z)'
                             />
                             <ToolButton
-                                buttonId='redoCellEdits'
                                 onClick={() => this.gridApi.redoCellEditing()}
                                 icon={Redo}
                                 tooltipMsg='Redo Edits (Ctrl + Y)'
@@ -137,7 +135,6 @@ class AgGridWrapper extends Component {
                     )}
                     {this.props.enableRowSelection && (
                         <ToolButton
-                            buttonId='clearRowSelection'
                             icon={IndeterminateCheckBoxIcon}
                             tooltipMsg='Clear Row Selection'
                             onClick={this.handleClearAllSelectionRows}
@@ -148,7 +145,6 @@ class AgGridWrapper extends Component {
                     )}
                     {this.props.enableCharts && (
                         <ToolButton
-                            buttonId='CreateCharts'
                             onClick={this.handleCreateChart}
                             icon={InsertChart}
                             tooltipMsg='Create Charts'
@@ -170,14 +166,15 @@ class AgGridWrapper extends Component {
                             }
                         />
                     )}
-                    <ToolButton
-                        buttonId='downloadData'
-                        icon={GetApp}
-                        tooltipMsg='Download'
-                        onClick={this.handleDownload}
-                        buttonType='menu'
-                        menuItems={this.state.downloadMenuItems}
-                    />
+                    {this.props.enableExport && (
+                        <ToolButton
+                            icon={GetApp}
+                            tooltipMsg='Download'
+                            onClick={this.handleDownload}
+                            buttonType='menu'
+                            menuItems={this.state.downloadMenuItems}
+                        />
+                    )}
                 </div>
             </Toolbar>
         );
@@ -203,6 +200,8 @@ class AgGridWrapper extends Component {
                                         columnDefs={this.props.columnDefs}
                                         rowData={this.props.rowData}
                                         animateRows={this.props.animateRows}
+                                        suppressCsvExport={this.props.enableExport}
+                                        suppressExcelExport={this.props.enableExport}
                                         enableRangeSelection={this.props.enableRangeSelection}
                                         statusBar={this.props.statusBar}
                                         rowDragManaged={this.props.enableRowReorder}
@@ -232,6 +231,7 @@ AgGridWrapper.defaultProps = {
     enableRowReorder: false,
     enableRowGrouping: false,
     enableCellEdits: false,
+    enableExport: true,
     toolbar: 'top',
     toolbarColor: '#EDEDED',
     height: '400px',
@@ -258,6 +258,7 @@ AgGridWrapper.defaultProps = {
         sortable: true,
     },
     gridProps: {},
+    rowData: [],
 };
 
 AgGridWrapper.propTypes = {
@@ -298,6 +299,8 @@ AgGridWrapper.propTypes = {
     ).isRequired,
     /** Row Data [Note: fields in object MUST MATCH fields defined in columnDefs] */
     rowData: PropTypes.arrayOf(PropTypes.object),
+    /** Enable Export */
+    enableExport: PropTypes.bool,
     /** Enable Row Selection (Toolbar required for clear All Selection Button) */
     enableRowSelection: PropTypes.shape({
         /** listener for parent component to get selected row's data */

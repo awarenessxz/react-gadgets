@@ -17,32 +17,36 @@ exports[`Testing if component renders properly Snapshot Testing 1`] = `
           style="flex-grow: 1;"
         />
         <div>
-          <button
-            aria-haspopup="true"
-            class="MuiButtonBase-root MuiIconButton-root"
-            id="downloadData"
-            tabindex="0"
+          <span
+            class=""
             title="Download"
-            type="button"
           >
-            <span
-              class="MuiIconButton-label"
+            <button
+              aria-haspopup="true"
+              aria-label="Download"
+              class="MuiButtonBase-root MuiIconButton-root"
+              tabindex="0"
+              type="button"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <span
+                class="MuiIconButton-label"
               >
-                <path
-                  d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
-                />
-              </svg>
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </span>
         </div>
       </div>
       <div
