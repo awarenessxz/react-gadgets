@@ -1,4 +1,5 @@
 // node-resolve will resolve all the node dependencies
+import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
@@ -44,5 +45,17 @@ export default {
             extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.node', '.json'],
         }),
         commonjs(),
+        copy({
+            targets: [
+                {
+                    src: 'node_modules/ag-grid-community/dist/styles/**/*',
+                    dest: 'dist/styles/agGrid',
+                },
+                {
+                    src: 'node_modules/bootstrap/dist/css/**/*',
+                    dest: 'dist/styles/bootstrap',
+                },
+            ],
+        }),
     ],
 };

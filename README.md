@@ -67,7 +67,8 @@ Refer to the [documentation](./doc/README.md) for more details.
     - Publishing to NPM / Checking it out locally
         - [Complete guide to publishing a React package to npm](https://blog.logrocket.com/the-complete-guide-to-publishing-a-react-package-to-npm/)
         - [React hooks in react library giving Invalid hook call error](https://stackoverflow.com/questions/56021112/react-hooks-in-react-library-giving-invalid-hook-call-error)
-        - [Setting a private npm registry publishing ci/cd pipeline](https://blog.harveydelaney.com/setting-up-a-private-npm-registry-publishing-ci-cd-pipeline/)
+        - [Peer Dependencies with Webpack Resolving](https://medium.com/@penx/managing-dependencies-in-a-node-package-so-that-they-are-compatible-with-npm-link-61befa5aaca7)
+        - [Setting a private npm registry publishing ci/cd pipeline](https://blog.harveydelaney.com/setting-up-a-private-npm-registry-publishing-ci-cd-pipeline/)  
     - Scripts
         - [Updating package.json](https://stackoverflow.com/questions/10685998/how-to-update-a-value-in-a-json-file-and-save-it-through-node-js)
         - [How can I use an es6 import in node](https://stackoverflow.com/questions/45854169/how-can-i-use-an-es6-import-in-node)
