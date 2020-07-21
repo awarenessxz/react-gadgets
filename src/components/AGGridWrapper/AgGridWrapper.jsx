@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
+import CheckBox from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import InsertChart from '@material-ui/icons/InsertChart';
 import GetApp from '@material-ui/icons/GetApp';
@@ -89,8 +91,12 @@ class AgGridWrapper extends Component {
     };
 
     // clears all row selection
-    handleClearAllSelectionRows = e => {
-        this.gridApi.deselectAll();
+    handleSelectionCheckbox = e => {
+        if (this.state.numOfSelectedRows < this.props.rowData.length) {
+            this.gridApi.selectAll();
+        } else {
+            this.gridApi.deselectAll();
+        }
     };
 
     // handle downloads
@@ -114,6 +120,17 @@ class AgGridWrapper extends Component {
         this.gridApi.createRangeChart(params);
     };
 
+    // renders selection icon
+    renderSelectionIcon = () => {
+        if (this.state.numOfSelectedRows <= 0) {
+            return <CheckBoxOutlineBlank />;
+        } else if (this.state.numOfSelectedRows >= this.props.rowData.length) {
+            return <CheckBox />;
+        } else {
+            return <IndeterminateCheckBoxIcon />;
+        }
+    };
+
     renderToolbar = () => {
         return (
             <Toolbar data-testid='toolbar' style={{ background: this.props.toolbarColor }}>
@@ -135,12 +152,15 @@ class AgGridWrapper extends Component {
                     )}
                     {this.props.enableRowSelection && (
                         <ToolButton
-                            icon={IndeterminateCheckBoxIcon}
-                            tooltipMsg='Clear Row Selection'
-                            onClick={this.handleClearAllSelectionRows}
+                            icon={this.renderSelectionIcon}
+                            tooltipMsg={
+                                this.state.numOfSelectedRows < this.props.rowData.length
+                                    ? 'Select All Rows'
+                                    : 'Clear All Selection'
+                            }
+                            onClick={this.handleSelectionCheckbox}
                             badgeCount={this.state.numOfSelectedRows}
                             buttonType='badge'
-                            disable={this.state.numOfSelectedRows <= 0}
                         />
                     )}
                     {this.props.enableCharts && (

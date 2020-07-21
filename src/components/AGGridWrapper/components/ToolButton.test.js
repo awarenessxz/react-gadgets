@@ -61,18 +61,10 @@ describe('Testing if component renders properly', () => {
             expect(screen.queryByText('Hello World')).toBeInTheDocument();
         });
 
-        describe('disabled button', () => {
-            it('renders properly', () => {
-                const toolTip = 'disabled button';
-                renderComponent({ disabled: true, tooltipMsg: toolTip });
-                expect(screen.getByRole('button', { name: toolTip })).toBeDisabled();
-            });
-
-            it('with different disabled icon renders properly', () => {
-                const toolTip = 'disabled button';
-                renderComponent({ disabled: true, disabledIcon: GetApp, tooltipMsg: toolTip });
-                expect(screen.getByRole('button', { name: toolTip })).toBeDisabled();
-            });
+        it('disabled button renders properly', () => {
+            const toolTip = 'disabled button';
+            renderComponent({ disabled: true, tooltipMsg: toolTip });
+            expect(screen.getByRole('button', { name: toolTip })).toBeDisabled();
         });
     });
 });

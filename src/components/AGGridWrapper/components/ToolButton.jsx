@@ -52,12 +52,7 @@ const ToolButton = props => {
 
     const renderIcon = () => {
         const Icon = props.icon;
-        if (props.disabledIcon) {
-            const DisabledIcon = props.disabledIcon;
-            return props.disabled ? <DisabledIcon /> : <Icon />;
-        } else {
-            return <Icon />;
-        }
+        return <Icon />;
     };
 
     const renderButtonWithBadge = () => {
@@ -198,8 +193,6 @@ ToolButton.propTypes = {
     onClick: PropTypes.func.isRequired,
     /** disable button */
     disabled: PropTypes.bool,
-    /** disabled icon */
-    disabledIcon: PropTypes.object,
     /** Button Type */
     buttonType: PropTypes.oneOf(['normal', 'badge', 'menu', 'dropdown']),
     /** badge counter (is Required when buttonType = "badge") */
