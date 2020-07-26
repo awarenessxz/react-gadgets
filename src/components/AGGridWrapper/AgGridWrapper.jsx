@@ -220,8 +220,8 @@ class AgGridWrapper extends Component {
                                         columnDefs={this.props.columnDefs}
                                         rowData={this.props.rowData}
                                         animateRows={this.props.animateRows}
-                                        suppressCsvExport={this.props.enableExport}
-                                        suppressExcelExport={this.props.enableExport}
+                                        suppressCsvExport={!this.props.enableExport}
+                                        suppressExcelExport={!this.props.enableExport}
                                         enableRangeSelection={this.props.enableRangeSelection}
                                         statusBar={this.props.statusBar}
                                         rowDragManaged={this.props.enableRowReorder}

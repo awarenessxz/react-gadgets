@@ -37,6 +37,7 @@ Refer to the [documentation](./doc/README.md) for more details.
     - [How to create react component library](https://medium.com/better-programming/lets-build-react-components-library-part-3-b2e7aec478a2)
     - [How to set up react component library with rollup](https://medium.com/grandata-engineering/how-i-set-up-a-react-component-library-with-rollup-be6ccb700333)
     - [How to write and build JS libraries in 2018](https://medium.com/@kelin2025/so-you-wanna-use-es6-modules-714f48b3a953)
+    - [Creating a React Component Library By Abstracting a React Component](https://medium.com/@benjaminwfox/creating-a-react-component-library-by-abstracting-a-react-component-library-45290114d22a)
     - Babel + Rollup
         - [Setting up React, Webpack and Babel](https://www.valentinog.com/blog/babel/)
         - [React Rollup Boilerplate](https://github.com/KaiHotz/react-rollup-boilerplate)
@@ -96,6 +97,9 @@ Refer to the [documentation](./doc/README.md) for more details.
     - Transfer List
         - [react-filtered-multiselect](https://github.com/insin/react-filtered-multiselect)
         - [material ui - transfer list ](https://material-ui.com/components/transfer-list/)
+
+5. Rollup
+    - [Rollup Externals](https://engineering.mixmax.com/blog/rollup-externals/)
 
 ## Credits
 

@@ -8,7 +8,8 @@
         "index": "./src/index.js",
         "Sample": "./src/components/Sample/Sample",
         "SampleWithSub": "./src/components/SampleWithSub/SampleWithSub",
-        "AgGridWrapper": "./src/components/AGGridWrapper/AgGridWrapper"
+        "AgGridWrapper": "./src/components/AGGridWrapper/AgGridWrapper",
+        "setAgGridLicense": "./src/utils/ag-grid-license-manager"
     },
     "target": {
         "cjs": "dist/cjs",
